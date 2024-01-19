@@ -1,0 +1,128 @@
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\Кирилл\мои программы\игра\Игрунька\main.exe, файл: d:\кирилл\кодеблокс\codeblocks\mingw\include\txlib.h, строка: 13677, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x004F32FC (32-bit), Flags: CMdRe0, Thread: 0x2C40 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004168E8 in D:\Кирилл\мои программы\игра\Игрунька\main.exe: (anonymous namespace)::TX::txTransparentBlt()
+# 1 0x0041C873 in D:\Кирилл\мои программы\игра\Игрунька\main.exe: main()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	d:\кирилл\кодеблокс\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 15 2024 17:53:31, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Jan 15 2024 17:53:41
+
+Run file:	D:\Кирилл\мои программы\игра\Игрунька\main.exe
+Directory:	D:\Кирилл\мои программы\игра\Игрунька
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\Кирилл\мои программы\игра\Игрунька\main.exe, файл: d:\кирилл\кодеблокс\codeblocks\mingw\include\txlib.h, строка: 13677, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x004F32FC (32-bit), Flags: CMdRe0, Thread: 0x97C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004168E8 in D:\Кирилл\мои программы\игра\Игрунька\main.exe: (anonymous namespace)::TX::txTransparentBlt()
+# 1 0x0041C873 in D:\Кирилл\мои программы\игра\Игрунька\main.exe: main()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	d:\кирилл\кодеблокс\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 15 2024 17:54:47, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Jan 15 2024 17:54:57
+
+Run file:	D:\Кирилл\мои программы\игра\Игрунька\main.exe
+Directory:	D:\Кирилл\мои программы\игра\Игрунька
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\Кирилл\мои программы\игра\Игрунька\main.exe, файл: d:\кирилл\кодеблокс\codeblocks\mingw\include\txlib.h, строка: 13677, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x004F32FC (32-bit), Flags: CMdRe0, Thread: 0x2A7C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004168E8 in D:\Кирилл\мои программы\игра\Игрунька\main.exe: (anonymous namespace)::TX::txTransparentBlt()
+# 1 0x0041C879 in D:\Кирилл\мои программы\игра\Игрунька\main.exe: main()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	d:\кирилл\кодеблокс\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 15 2024 17:59:49, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Jan 15 2024 17:59:59
+
+Run file:	D:\Кирилл\мои программы\игра\Игрунька\main.exe
+Directory:	D:\Кирилл\мои программы\игра\Игрунька
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\Кирилл\мои программы\игра\Игрунька\main.exe, файл: d:\кирилл\кодеблокс\codeblocks\mingw\include\txlib.h, строка: 13677, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400], Instance: 0x004F32FC (32-bit), Flags: CMdRe0, Thread: 0x2DF4 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004168E8 in D:\Кирилл\мои программы\игра\Игрунька\main.exe: (anonymous namespace)::TX::txTransparentBlt()
+# 1 0x0041C879 in D:\Кирилл\мои программы\игра\Игрунька\main.exe: main()
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 172, Date: 2023-09-05 19:24:34 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	d:\кирилл\кодеблокс\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 15 2024 18:00:42, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Jan 15 2024 18:00:52
+
+Run file:	D:\Кирилл\мои программы\игра\Игрунька\main.exe
+Directory:	D:\Кирилл\мои программы\игра\Игрунька
+
+--------------------------------------------------
