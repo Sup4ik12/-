@@ -126,3 +126,1065 @@ Run file:	D:\Кирилл\мои программы\игра\Игрунька\main.exe
 Directory:	D:\Кирилл\мои программы\игра\Игрунька
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 190, 121} не полностью лежит внутри изображения-источника {0, 0, 190, 95}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x2BCC (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C082 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150*nKad,121,cat,0,0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) txSleep(15); nKad=0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150*nKad,121,cat,0,0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) txSleep(15); nKad=0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 17:50:01, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 17:50:22
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 190, 121} не полностью лежит внутри изображения-источника {0, 0, 190, 95}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x2BCC (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C082 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150*nKad,121,cat,0,0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) txSleep(15); nKad=0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150*nKad,121,cat,0,0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) txSleep(15); nKad=0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 17:50:01, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 17:50:21
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 150, 121} не полностью лежит внутри изображения-источника {0, 0, 95, 190}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x2068 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C086 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:00:54, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:01:14
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {150, 0, 300, 121} не полностью лежит внутри изображения-источника {0, 0, 95, 190}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x2068 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C086 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:00:54, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:01:14
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {150, 0, 300, 121} не полностью лежит внутри изображения-источника {0, 0, 95, 190}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x2938 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C086 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:04:56, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:05:16
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {300, 0, 450, 121} не полностью лежит внутри изображения-источника {0, 0, 95, 190}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x2938 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C086 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:04:56, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:05:16
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 150, 121} не полностью лежит внутри изображения-источника {0, 0, 95, 190}, функция txTransparentBlt() работать не будет.
+
+#3: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x2938 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C086 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:04:56, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:05:16
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {300, 0, 450, 121} не полностью лежит внутри изображения-источника {0, 0, 190, 95}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x2FB4 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C086 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:06:27, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:06:48
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 150, 121} не полностью лежит внутри изображения-источника {0, 0, 190, 95}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x2FB4 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C086 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:06:27, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:06:47
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {150, 0, 300, 121} не полностью лежит внутри изображения-источника {0, 0, 190, 95}, функция txTransparentBlt() работать не будет.
+
+#3: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x2FB4 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C086 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39:         nKad += 1;
+     40:         if (nKad>=3) nKad=0;
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:06:27, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:06:47
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 150, 121} не полностью лежит внутри изображения-источника {0, 0, 190, 95}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x10FC (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C086 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39: 
+     40: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (38):
+
+     36:         txSetFillColor (TX_WHITE);
+     37: 
+=>   38:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     39: 
+     40: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:07:27, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:07:48
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 150, 121} не полностью лежит внутри изображения-источника {0, 0, 95, 190}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0xB34 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C0D1 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (39):
+
+     37:         txSetFillColor (TX_WHITE);
+     38: 
+=>   39:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     40: 
+     41: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (39):
+
+     37:         txSetFillColor (TX_WHITE);
+     38: 
+=>   39:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     40: 
+     41: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:22:16, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:22:37
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 150, 121} не полностью лежит внутри изображения-источника {0, 0, 95, 190}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0xB34 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C0D1 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (39):
+
+     37:         txSetFillColor (TX_WHITE);
+     38: 
+=>   39:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     40: 
+     41: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (39):
+
+     37:         txSetFillColor (TX_WHITE);
+     38: 
+=>   39:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+     40: 
+     41: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:22:16, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:22:37
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 150, 121} не полностью лежит внутри изображения-источника {0, 0, 95, 190}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x1514 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C0D1 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (39):
+
+     37:         txSetFillColor (TX_WHITE);
+     38: 
+=>   39:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(150,150,100));
+     40: 
+     41: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (39):
+
+     37:         txSetFillColor (TX_WHITE);
+     38: 
+=>   39:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(150,150,100));
+     40: 
+     41: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:23:50, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:24:12
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {0, 0, 150, 121} не полностью лежит внутри изображения-источника {0, 0, 95, 190}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x1514 (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C0D1 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (39):
+
+     37:         txSetFillColor (TX_WHITE);
+     38: 
+=>   39:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(150,150,100));
+     40: 
+     41: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (39):
+
+     37:         txSetFillColor (TX_WHITE);
+     38: 
+=>   39:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(150,150,100));
+     40: 
+     41: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:23:50, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:24:12
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {150, 0, 300, 121} не полностью лежит внутри изображения-источника {0, 0, 190, 95}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x358C (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C0D1 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (39):
+
+     37:         txSetFillColor (TX_WHITE);
+     38: 
+=>   39:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(150,150,100));
+     40: 
+     41: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (39):
+
+     37:         txSetFillColor (TX_WHITE);
+     38: 
+=>   39:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(150,150,100));
+     40: 
+     41: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:23:50, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:24:42
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {150, 0, 300, 121} не полностью лежит внутри изображения-источника {0, 0, 190, 95}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x358C (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C0D1 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (39):
+
+     37:         txSetFillColor (TX_WHITE);
+     38: 
+=>   39:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(150,150,100));
+     40: 
+     41: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (39):
+
+     37:         txSetFillColor (TX_WHITE);
+     38: 
+=>   39:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(150,150,100));
+     40: 
+     41: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:23:50, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:24:42
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\main.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {150, 0, 300, 121} не полностью лежит внутри изображения-источника {0, 0, 190, 95}, функция txTransparentBlt() работать не будет.
+
+#3: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x005042FC (32-bit), Flags: CMdRe0, Thread: 0x358C (Main), GetLastError(): 13 (Недопустимые данные). 
+From: c:\codeblocks\codeblocks\mingw\include\txlib.h (13677) bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF).
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004228EC in D:\Козлов Кирилл\игра\--main\main.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0042C0D1 in D:\Козлов Кирилл\игра\--main\main.exe: main() at D:/Козлов Кирилл/игра/--main/main.cpp (39):
+
+     37:         txSetFillColor (TX_WHITE);
+     38: 
+=>   39:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(150,150,100));
+     40: 
+     41: 
+
+--------------------------------------------------
+Стек вызовов TX:
+
+# 0 in bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF) at c:\codeblocks\codeblocks\mingw\include\txlib.h (13677):
+
+  13675:         {
+  13676: $       SetLastError (ERROR_INVALID_DATA);
+=>13677: $       TX_ERROR ("Прямоугольник копируемой области {%g, %g, %g, %g} не полностью лежит внутри изображения-источника {%d, %d, %d, %d}, "
+  13678:                   "функция txTransparentBlt() работать не будет.", xSource, ySource, xSource + width, ySource + height, 0, 0, (int) size.x, (int) size.y);
+  13679:         }
+
+# 1 in int main() at D:\Козлов Кирилл\игра\--main\main.cpp (39):
+
+     37:         txSetFillColor (TX_WHITE);
+     38: 
+=>   39:         txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(150,150,100));
+     40: 
+     41: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Jan 19 2024 18:23:50, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, DEBUG
+Started:	Jan 19 2024 18:24:42
+
+Run file:	D:\Козлов Кирилл\игра\--main\main.exe
+Directory:	D:\Козлов Кирилл\игра\--main
+
+--------------------------------------------------

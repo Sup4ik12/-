@@ -36,8 +36,8 @@ txCreateWindow (1920, 1080);
         txBegin();
         txSetFillColor (TX_WHITE);
 
-        txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(150,150,100));
-
+        txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(255,4,0));
+        
 
         if(GetAsyncKeyState ('W'))
         {
@@ -68,8 +68,8 @@ txCreateWindow (1920, 1080);
         if(GetAsyncKeyState ('D') and GetAsyncKeyState ('S'))
         {
             cat = catRD ;
-            xCat +=0.5*Vcat;
-            yCat +=0.5*Vcat;
+            xCat +=Vcat;
+            yCat +=Vcat;
             xL-=Vcat;
             nKad += 1;
             if (nKad>=3) nKad=0;
