@@ -1,6 +1,6 @@
 #include "TXLib.h"
 
-struct Cat
+struct cat
 {
     HDC R;
     HDC L;
@@ -15,37 +15,31 @@ struct Cat
     int h;
     int x;
     int y;
-    int z;
+    int v;
+    void drawCat()
+    {
+    if (image == R|| image == L )
+        {
+            txTransparentBlt (txDC(), x, y, w, h, image, 0, 0, TX_WHITE);
+        }
+    else if (image == U || image == D )
+        {
+            txTransparentBlt (txDC(), x, y, h, w, image, 0, 0, TX_WHITE);
+        }
+    }
 };
 int main()
 {
 txCreateWindow (1920, 1080);
 
     txSetColor (TX_WHITE, 5);
-    HDC carR =txLoadImage("car/áèáèêàRIGHT.bmp");
-    HDC carU =txLoadImage("car/áèáèêàUP.bmp");
-    HDC carD =txLoadImage("car/áèáèêàDOWN.bmp");
-    HDC carL =txLoadImage("car/áèáèêàLEFT.bmp");
     HDC location=txLoadImage("ëîêà.bmp");
-    HDC catR = txLoadImage("catR.bmp");
-    HDC catRD = txLoadImage("catRD.bmp");
-    HDC cat = catR;
+    cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,150,150,100,100,15};
 
-    Cat cat = {txLoadImage("catR.bmp"),};
-
-    int xCat = 100; int Vcat = 15; int yCat = 100;
     int xL = 0; int yL = 0;
     int nKad = 0;
 
-     if (cat == carR|| cat == carL )
-        {
-            txTransparentBlt (txDC(), xCat, yCat, 190, 95, cat, 0, 0, TX_WHITE);
-        }
-    else if (cat == carU || cat == carD )
-        {
-            txTransparentBlt (txDC(), xCat, yCat, 95, 190, cat, 0, 0, TX_WHITE);
-        }
-
+    cat.drawCat();
 
     while (!GetAsyncKeyState(VK_ESCAPE))
     {
@@ -55,52 +49,90 @@ txCreateWindow (1920, 1080);
         txBegin();
         txSetFillColor (TX_WHITE);
 
-        txTransparentBlt(txDC(),xCat,yCat, 150,121,cat, 150*nKad, 0,RGB(150,150,100));
+        txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 150*nKad, 0,RGB(150,150,100));
 
 
         if(GetAsyncKeyState ('W'))
         {
-           cat=carU;
-           yCat -= Vcat;
-           yL += Vcat;
+           cat.image=cat.U;
+           cat.y -= cat.v;
+           yL += cat.v;
+           nKad += 1;
+            if (nKad>=3) nKad=0;
         }
         if(GetAsyncKeyState ('S'))
         {
-            cat = carD;
-            yCat = yCat + Vcat;
-              yL -= Vcat;
+            cat.image = cat.D;
+            cat.y+=cat.v;
+              yL -= cat.v;
+              nKad += 1;
+            if (nKad>=3) nKad=0;
         }
         if(GetAsyncKeyState ('A'))
         {
-            cat = carL;
-            xCat = xCat - Vcat;
-            xL+=Vcat;
+            cat.image = cat.L;
+            cat.x -=cat.v;
+            xL+=cat.v;
+            nKad += 1;
+            if (nKad>=3) nKad=0;
+
         }
         if(GetAsyncKeyState ('D'))
         {
-            cat = catR;
-            xCat +=Vcat;
-            xL-=Vcat;
+            cat.image = cat.R;
+            cat.x +=cat.v;
+            xL-=cat.v;
             nKad += 1;
             if (nKad>=3) nKad=0;
         }
         if(GetAsyncKeyState ('D') and GetAsyncKeyState ('S'))
         {
-            cat = catRD ;
-            xCat +=0.5*Vcat;
-            yCat +=0.5*Vcat;
-            xL-=Vcat;
+            cat.image = cat.RD ;
+            cat.x +=0.5*cat.v;
+            cat.y +=0.5*cat.v;
+            xL-=cat.v;
+            nKad += 1;
+            if (nKad>=3) nKad=0;
+        }
+        if(GetAsyncKeyState ('D') and GetAsyncKeyState ('W'))
+        {
+            cat.image = cat.RU ;
+            cat.x +=0.5*cat.v;
+            cat.y -=0.5*cat.v;
+            xL-=cat.v;
+            nKad += 1;
+            if (nKad>=3) nKad=0;
+        }
+        if(GetAsyncKeyState ('A') and GetAsyncKeyState ('S'))
+        {
+            cat.image = cat.LD ;
+            cat.x -=0.5*cat.v;
+            cat.y +=0.5*cat.v;
+            xL-=cat.v;
+            nKad += 1;
+            if (nKad>=3) nKad=0;
+        }
+        if(GetAsyncKeyState ('A') and GetAsyncKeyState ('W'))
+        {
+            cat.image = cat.LU ;
+            cat.x -=0.5*cat.v;
+            cat.y -=0.5*cat.v;
+            xL-=cat.v;
             nKad += 1;
             if (nKad>=3) nKad=0;
         }
         txEnd();
         txSleep(10);
     }
-txDeleteDC(cat);
-txDeleteDC(carU);
-txDeleteDC(carD);
-txDeleteDC(carL);
-txDeleteDC(carR);
+txDeleteDC(cat.image);
+txDeleteDC(cat.U);
+txDeleteDC(cat.D);
+txDeleteDC(cat.L);
+txDeleteDC(cat.R);
+txDeleteDC(cat.RU);
+txDeleteDC(cat.RD);
+txDeleteDC(cat.LU);
+txDeleteDC(cat.LD);
 txDeleteDC(location);
 txDisableAutoPause();
 txTextCursor (false);
