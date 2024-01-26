@@ -1,5 +1,22 @@
 #include "TXLib.h"
 
+struct Cat
+{
+    HDC R;
+    HDC L;
+    HDC U;
+    HDC D;
+    HDC RD;
+    HDC LD;
+    HDC RU;
+    HDC LU;
+    HDC image;
+    int w;
+    int h;
+    int x;
+    int y;
+    int z;
+};
 int main()
 {
 txCreateWindow (1920, 1080);
@@ -13,6 +30,8 @@ txCreateWindow (1920, 1080);
     HDC catR = txLoadImage("catR.bmp");
     HDC catRD = txLoadImage("catRD.bmp");
     HDC cat = catR;
+
+    Cat cat = {txLoadImage("catR.bmp"),};
 
     int xCat = 100; int Vcat = 15; int yCat = 100;
     int xL = 0; int yL = 0;
