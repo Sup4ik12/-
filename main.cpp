@@ -16,6 +16,7 @@ struct cat
     int x;
     int y;
     int v;
+    int v1;
     void drawCat()
     {
     if (image == R|| image == L )
@@ -28,101 +29,176 @@ struct cat
         }
     }
 };
+
+struct button
+{
+  int x;
+  int y;
+  int w;
+  int h;
+  const char* text;
+
+  void draw()
+    {
+     txSetColor(TX_RED);
+     txSetFillColor(TX_WHITE);
+     txRectangle(x,y,x+w,y+h);
+     txDrawText(x, y, x+w, y+h, text);
+    }
+};
 int main()
 {
-txCreateWindow (1920, 1080);
-
+    txCreateWindow (1920, 1080);
     txSetColor (TX_WHITE, 5);
-    HDC location=txLoadImage("лока.bmp");
-    cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,150,150,100,100,15};
+
+    string page = "menu";
+
+    HDC location=txLoadImage("лока/лока.bmp");
+    cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,150,150,100,100,15,cat.v1/2};
 
     int xL = 0; int yL = 0;
     int nKad = 0;
 
+    button btnSt = {500,250,150,75,"—“ј–“"};
+    button btnHe = {750,500,150,75,"ѕјћј√»“≈"};
+    button btnEx = {1000,750,150,75,"”…“»"};
+
     cat.drawCat();
 
-    while (!GetAsyncKeyState(VK_ESCAPE))
+    while (page != "exit")
     {
         txSetFillColor(TX_BLACK);
         txClear();
-        txBitBlt(txDC(),xL,yL,4860,2896,location);
+
         txBegin();
         txSetFillColor (TX_WHITE);
+         //меню
+        if(page == "menu")
+        {
+            btnSt.draw();
+            btnHe.draw();
+            btnEx.draw();
+            if( txMouseButtons() == 1 and
+                btnSt.x < txMouseX() and txMouseX() < btnSt.w + btnSt.x and
+                btnSt.y < txMouseY() and txMouseY() < btnSt.y + btnSt.h)
+            {
+                page = "game";
+            }
+            if( txMouseButtons() == 1 and
+                btnHe.x < txMouseX() and txMouseX() < btnHe.w + btnHe.x and
+                btnHe.y < txMouseY() and txMouseY() < btnHe.y + btnHe.h)
+            {
+                page = "help";
+            }
+            if( txMouseButtons() == 1 and
+                btnEx.x < txMouseX() and txMouseX() < btnEx.w + btnEx.x and
+                btnEx.y < txMouseY() and txMouseY() < btnEx.y + btnEx.h)
+            {
+                page = "exit";
+            }
+        }
 
-        txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 150*nKad, 0,RGB(150,150,100));
+        if(page == "help")
+        {
+            btnEx.draw();
+            txDrawText(500,500,1000,1000,"ну сам как-нибудь");
+            if( txMouseButtons() == 1 and
+                btnEx.x < txMouseX() and txMouseX() < btnEx.w + btnEx.x and
+                btnEx.y < txMouseY() and txMouseY() < btnEx.y + btnEx.h)
+            {
+                page = "menu";
+            }
+        }
+
+        //игра
+        if(page == "game")
+        {
+            txBitBlt(txDC(),xL,yL,4860,2896,location);
+            txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 150*nKad, 0,RGB(150,150,100));
+            if(GetAsyncKeyState ('P'))
+            {
+               page = "exit";
+            }
+            if(GetAsyncKeyState ('W') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
+            {
+               cat.image=cat.U;
+               cat.y -= cat.v;
+               yL += cat.v;
+               nKad += 1;
+                if (nKad>=3) nKad=0;
+            }
+            if(GetAsyncKeyState ('S') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
+            {
+                cat.image = cat.D;
+                cat.y+=cat.v;
+                yL -= cat.v;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+            }
+            if(GetAsyncKeyState ('A') and !GetAsyncKeyState ('S') and !GetAsyncKeyState ('W'))
+            {
+                cat.image = cat.L;
+                cat.x -=cat.v;
+                xL+=cat.v;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+
+            }
+            if(GetAsyncKeyState ('D') and !GetAsyncKeyState ('S') and !GetAsyncKeyState ('W'))
+            {
+                cat.image = cat.R;
+                cat.x +=cat.v;
+                xL-=cat.v;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+            }
+            if(GetAsyncKeyState ('D') and GetAsyncKeyState ('S'))
+            {
+                cat.image = cat.RD;
+                cat.x +=cat.v1;
+                cat.y +=cat.v1;
+                xL-=cat.v1;
+                yL -= cat.v1;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+            }
+            if(GetAsyncKeyState ('D') and GetAsyncKeyState ('W'))
+            {
+                cat.image = cat.RU ;
+                cat.x +=cat.v1;
+                cat.y -=cat.v1;
+                xL-=cat.v1;
+                yL += cat.v1;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+            }
+            if(GetAsyncKeyState ('A') and GetAsyncKeyState ('S'))
+            {
+                cat.image = cat.LD ;
+                cat.x -=cat.v1;
+                cat.y +=cat.v1;
+                xL-=cat.v1;
+                yL -= cat.v1;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+            }
+            if(GetAsyncKeyState ('A') and GetAsyncKeyState ('W'))
+            {
+                cat.image = cat.LU ;
+                cat.x -=cat.v1;
+                cat.y -=cat.v1;
+                xL-=cat.v1;
+                yL += cat.v1;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+            }
 
 
-        if(GetAsyncKeyState ('W'))
-        {
-           cat.image=cat.U;
-           cat.y -= cat.v;
-           yL += cat.v;
-           nKad += 1;
-            if (nKad>=3) nKad=0;
         }
-        if(GetAsyncKeyState ('S'))
-        {
-            cat.image = cat.D;
-            cat.y+=cat.v;
-              yL -= cat.v;
-              nKad += 1;
-            if (nKad>=3) nKad=0;
-        }
-        if(GetAsyncKeyState ('A'))
-        {
-            cat.image = cat.L;
-            cat.x -=cat.v;
-            xL+=cat.v;
-            nKad += 1;
-            if (nKad>=3) nKad=0;
 
-        }
-        if(GetAsyncKeyState ('D'))
-        {
-            cat.image = cat.R;
-            cat.x +=cat.v;
-            xL-=cat.v;
-            nKad += 1;
-            if (nKad>=3) nKad=0;
-        }
-        if(GetAsyncKeyState ('D') and GetAsyncKeyState ('S'))
-        {
-            cat.image = cat.RD ;
-            cat.x +=0.5*cat.v;
-            cat.y +=0.5*cat.v;
-            xL-=cat.v;
-            nKad += 1;
-            if (nKad>=3) nKad=0;
-        }
-        if(GetAsyncKeyState ('D') and GetAsyncKeyState ('W'))
-        {
-            cat.image = cat.RU ;
-            cat.x +=0.5*cat.v;
-            cat.y -=0.5*cat.v;
-            xL-=cat.v;
-            nKad += 1;
-            if (nKad>=3) nKad=0;
-        }
-        if(GetAsyncKeyState ('A') and GetAsyncKeyState ('S'))
-        {
-            cat.image = cat.LD ;
-            cat.x -=0.5*cat.v;
-            cat.y +=0.5*cat.v;
-            xL-=cat.v;
-            nKad += 1;
-            if (nKad>=3) nKad=0;
-        }
-        if(GetAsyncKeyState ('A') and GetAsyncKeyState ('W'))
-        {
-            cat.image = cat.LU ;
-            cat.x -=0.5*cat.v;
-            cat.y -=0.5*cat.v;
-            xL-=cat.v;
-            nKad += 1;
-            if (nKad>=3) nKad=0;
-        }
         txEnd();
         txSleep(10);
+
     }
 txDeleteDC(cat.image);
 txDeleteDC(cat.U);
