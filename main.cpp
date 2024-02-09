@@ -17,6 +17,8 @@ struct cat
     int y;
     int v;
     int v1;
+    int vL;
+    int vL1;
     void drawCat()
     {
     if (image == R|| image == L )
@@ -29,7 +31,6 @@ struct cat
         }
     }
 };
-
 struct button
 {
   int x;
@@ -54,7 +55,7 @@ int main()
     string page = "menu";
 
     HDC location=txLoadImage("ëîêà/ëîêà.bmp");
-    cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,150,150,100,100,15,cat.v/2};
+    cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,150,150,800,425,15,cat.v/1.5,cat.v,cat.v/1.5};
 
     int xL = 0; int yL = 0;
     int nKad = 0;
@@ -64,6 +65,9 @@ int main()
     button btnEx = {1000,750,150,75,"ÓÉÒÈ"};
 
     cat.drawCat();
+
+    char xC[50];
+    char yC[50];
 
     while (page != "exit")
     {
@@ -118,27 +122,57 @@ int main()
             {
                page = "exit";
             }
+
+            if(xL>0)
+            {
+                cat.vL=0;
+                cat.vL1=0;
+                cat.v=15;
+                cat.v1=15;
+            }
+            if(cat.v == 15 and cat.x>800)
+            {
+                cat.v=0;
+                cat.v1=0;
+                cat.vL=15;
+                cat.vL1=15;
+            }
+            if(yL>0)
+            {
+                cat.vL=0;
+                cat.vL1=0;
+                cat.v=15;
+                cat.v1=15;
+            }
+            else
+            {
+                cat.v=0;
+                cat.v1=0;
+                cat.vL=15;
+                cat.vL1=15;
+            }
+
             if(GetAsyncKeyState ('W') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
             {
                cat.image=cat.U;
                cat.y -= cat.v;
-               yL += cat.v;
+               yL += cat.vL;
                nKad += 1;
                 if (nKad>=3) nKad=0;
             }
             if(GetAsyncKeyState ('S') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
             {
                 cat.image = cat.D;
-                cat.y+=cat.v;
-                yL -= cat.v;
+                cat.y += cat.v;
+                yL -= cat.vL;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
             if(GetAsyncKeyState ('A') and !GetAsyncKeyState ('S') and !GetAsyncKeyState ('W'))
             {
                 cat.image = cat.L;
-                cat.x -=cat.v;
-                xL+=cat.v;
+                xL+=cat.vL;
+                cat.x -= cat.v;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
 
@@ -146,56 +180,65 @@ int main()
             if(GetAsyncKeyState ('D') and !GetAsyncKeyState ('S') and !GetAsyncKeyState ('W'))
             {
                 cat.image = cat.R;
-                cat.x +=cat.v;
-                xL-=cat.v;
+                xL-=cat.vL;
+                cat.x += cat.v;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
             if(GetAsyncKeyState ('D') and GetAsyncKeyState ('S'))
             {
                 cat.image = cat.RD;
-                cat.x +=cat.v1;
-                cat.y +=cat.v1;
-                xL-=cat.v1;
-                yL -= cat.v1;
+                xL-=cat.vL1;
+                yL -= cat.vL1;
+                cat.x += cat.v;
+                cat.y += cat.v;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
             if(GetAsyncKeyState ('D') and GetAsyncKeyState ('W'))
             {
                 cat.image = cat.RU ;
-                cat.x +=cat.v1;
-                cat.y -=cat.v1;
-                xL-=cat.v1;
-                yL += cat.v1;
+                xL-=cat.vL1;
+                yL += cat.vL1;
+                cat.x += cat.v;
+                cat.y -= cat.v;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
             if(GetAsyncKeyState ('A') and GetAsyncKeyState ('S'))
             {
                 cat.image = cat.LD ;
-                cat.x -=cat.v1;
-                cat.y +=cat.v1;
-                xL-=cat.v1;
-                yL -= cat.v1;
+                xL+=cat.vL1;
+                yL -= cat.vL1;
+                cat.x -= cat.v;
+                cat.y += cat.v;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
             if(GetAsyncKeyState ('A') and GetAsyncKeyState ('W'))
             {
                 cat.image = cat.LU ;
-                cat.x -=cat.v1;
-                cat.y -=cat.v1;
-                xL-=cat.v1;
-                yL += cat.v1;
+                xL+=cat.vL1;
+                yL += cat.vL1;
+                cat.x -= cat.v;
+                cat.y -= cat.v;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
+
+
             if(!GetAsyncKeyState ('S') and !GetAsyncKeyState ('A') and !GetAsyncKeyState ('W') and !GetAsyncKeyState ('D'))
                 {
                     nKad = 0;
                 }
+
+            sprintf(xC, "X - %d", cat.x-xL);
+            sprintf(yC, "Y - %d", cat.y-yL);
+            txSetColor(TX_WHITE,5);
+            txTextOut(500,500,yC);
+            txTextOut(500,470,xC);
         }
+
 
         txEnd();
         txSleep(10);
