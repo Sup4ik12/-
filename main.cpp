@@ -9,7 +9,7 @@ struct cat
     HDC RD;
     HDC LD;
     HDC RU;
-    HDC LU;
+    HDC LU;                                                 //ÂÛÒÀÙÈ ËÎÊÓ ÈÇ ÀÐÕÈÂÀ
     HDC image;
     int w;
     int h;
@@ -54,7 +54,7 @@ int main()
     string page = "menu";
 
     HDC location=txLoadImage("ëîêà/ëîêà.bmp");
-    cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,150,150,100,100,15,cat.v1/2};
+    cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,150,150,100,100,15,cat.v/2};
 
     int xL = 0; int yL = 0;
     int nKad = 0;
@@ -69,7 +69,6 @@ int main()
     {
         txSetFillColor(TX_BLACK);
         txClear();
-
         txBegin();
         txSetFillColor (TX_WHITE);
          //ìåíþ
@@ -192,8 +191,10 @@ int main()
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
-
-
+            if(!GetAsyncKeyState ('S') and !GetAsyncKeyState ('A') and !GetAsyncKeyState ('W') and !GetAsyncKeyState ('D'))
+                {
+                    nKad = 0;
+                }
         }
 
         txEnd();
