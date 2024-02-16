@@ -68,6 +68,9 @@ int main()
 
     char xC[50];
     char yC[50];
+    char yM[50];
+    char xM[50];
+
 
     while (page != "exit")
     {
@@ -130,13 +133,6 @@ int main()
                 cat.v=15;
                 cat.v1=15;
             }
-            if(cat.v == 15 and cat.x>800)
-            {
-                cat.v=0;
-                cat.v1=0;
-                cat.vL=15;
-                cat.vL1=15;
-            }
             if(yL>0)
             {
                 cat.vL=0;
@@ -144,13 +140,14 @@ int main()
                 cat.v=15;
                 cat.v1=15;
             }
-            else
+              if(cat.v == 15 and cat.x-xL>800 and cat.y-yL>425)
             {
                 cat.v=0;
                 cat.v1=0;
                 cat.vL=15;
                 cat.vL1=15;
             }
+
 
             if(GetAsyncKeyState ('W') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
             {
@@ -225,8 +222,6 @@ int main()
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
-
-
             if(!GetAsyncKeyState ('S') and !GetAsyncKeyState ('A') and !GetAsyncKeyState ('W') and !GetAsyncKeyState ('D'))
                 {
                     nKad = 0;
@@ -234,9 +229,16 @@ int main()
 
             sprintf(xC, "X - %d", cat.x-xL);
             sprintf(yC, "Y - %d", cat.y-yL);
+            int xMouse = txMouseX();
+            int yMouse = txMouseY();
+            sprintf(xM, "Xm - %d", xMouse);
+            sprintf(yM, "Ym - %d", yMouse);
             txSetColor(TX_WHITE,5);
             txTextOut(500,500,yC);
             txTextOut(500,470,xC);
+            txTextOut(500,530,xM);
+            txTextOut(500,560,yM);
+
         }
 
 
