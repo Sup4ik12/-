@@ -38,11 +38,15 @@ struct button
   int w;
   int h;
   const char* text;
+  int colorVny;
+  int colorVne;
+  int r;
 
   void draw()
     {
-     txSetColor(TX_RED);
-     txSetFillColor(TX_WHITE);
+     txSetColor(colorVne);
+     txSetFillColor(colorVny);
+     txSelectFont ("Comic Sans MS", r);
      txRectangle(x,y,x+w,y+h);
      txDrawText(x, y, x+w, y+h, text);
     }
@@ -55,19 +59,29 @@ int main()
     string page = "menu";
 
     HDC location=txLoadImage("ÎÓÍ‡/ÎÓÍ‡.bmp");
+    HDC house=txLoadImage("ÎÓÍ‡/‰ÓÏ.bmp");
     cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,150,150,800,425,15,cat.v/1.5,cat.v,cat.v/1.5};
+    HDC granny=txLoadImage("·‡·ÛÎˇ.bmp");
+    HDC dialog=txLoadImage("‰Ë‡ÎÓ„.bmp");
+    HDC Lose=txLoadImage("ÍÓÚœÎ‡ÍœÎ‡Í.bmp");
 
     int xL = 0; int yL = 0;
     int nKad = 0;
 
-    button btnSt = {500,250,150,75,"—“¿–“"};
-    button btnHe = {750,500,150,75,"œ¿Ã¿√»“≈"};
-    button btnEx = {1000,750,150,75,"”…“»"};
+    button btnSt = {500,250,150,75,"—“¿–“",TX_WHITE,TX_RED,30};
+    button btnHe = {750,500,150,75,"œ¿Ã¿√»“≈",TX_WHITE,TX_RED,30};
+    button btnEx = {1000,750,150,75,"”…“»",TX_WHITE,TX_RED,30};
+    button btnV1 = {600,575,200,75,"Ãﬂ”",RGB(227, 185, 109),RGB(133, 98, 37),100};
+    button btnV2 = {600,700,200,75,"*«¿ÿ»œ≈“‹*",RGB(227, 185, 109),RGB(133, 98, 37),38};
+
 
     cat.drawCat();
 
     char xC[50];
     char yC[50];
+    char yM[50];
+    char xM[50];
+
 
     while (page != "exit")
     {
@@ -85,7 +99,7 @@ int main()
                 btnSt.x < txMouseX() and txMouseX() < btnSt.w + btnSt.x and
                 btnSt.y < txMouseY() and txMouseY() < btnSt.y + btnSt.h)
             {
-                page = "game";
+                page = "street";
             }
             if( txMouseButtons() == 1 and
                 btnHe.x < txMouseX() and txMouseX() < btnHe.w + btnHe.x and
@@ -104,6 +118,7 @@ int main()
         if(page == "help")
         {
             btnEx.draw();
+            txSetColor(TX_WHITE);
             txDrawText(500,500,1000,1000,"ÌÛ Ò‡Ï Í‡Í-ÌË·Û‰¸");
             if( txMouseButtons() == 1 and
                 btnEx.x < txMouseX() and txMouseX() < btnEx.w + btnEx.x and
@@ -114,45 +129,37 @@ int main()
         }
 
         //Ë„‡
-        if(page == "game")
+        if(page == "street")
         {
-            txBitBlt(txDC(),xL,yL,4860,2896,location);
+            txBitBlt(txDC(),xL,yL,2948,1716,location);
             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 150*nKad, 0,RGB(150,150,100));
             if(GetAsyncKeyState ('P'))
             {
                page = "exit";
             }
-
             if(xL>0)
             {
                 cat.vL=0;
-                cat.vL1=0;
                 cat.v=15;
-                cat.v1=15;
-            }
-            if(xL<0);
-            {
-                xL
-                cat.v=0;
-                cat.v1=0;
-                cat.vL=15;
-                cat.vL1=15;
+                yL=0;
             }
             if(yL>0)
             {
-                cat.vL=0;
                 cat.vL1=0;
-                cat.v=15;
                 cat.v1=15;
-            }
-            else
-            {
-                cat.v=0;
-                cat.v1=0;
-                cat.vL=15;
-                cat.vL1=15;
+                yL=0;
             }
 
+            if(cat.x-xL>800)
+            {
+                cat.v=0;
+                cat.vL=15;
+            }
+            if(cat.y-yL>425)
+            {
+                cat.v1=0;
+                cat.vL1=15;
+            }
             if(GetAsyncKeyState ('W') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
             {
                cat.image=cat.U;
@@ -226,18 +233,78 @@ int main()
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
-
-
             if(!GetAsyncKeyState ('S') and !GetAsyncKeyState ('A') and !GetAsyncKeyState ('W') and !GetAsyncKeyState ('D'))
                 {
                     nKad = 0;
                 }
+            if (txMouseButtons() == 2 and
+                823 <= txMouseX() and txMouseX() <= 947 and
+                398 <= txMouseY() and txMouseY() <= 515 and
+                2600 <= cat.x-xL and cat.x-xL <= 2700 and
+                540 <= cat.y-yL and cat.y-yL <= 560)
+            {
+                page = "dom";
+            }
+
 
             sprintf(xC, "X - %d", cat.x-xL);
             sprintf(yC, "Y - %d", cat.y-yL);
+            int xMouse = txMouseX();
+            int yMouse = txMouseY();
+            sprintf(xM, "Xm - %d", xMouse);
+            sprintf(yM, "Ym - %d", yMouse);
             txSetColor(TX_WHITE,5);
             txTextOut(500,500,yC);
             txTextOut(500,470,xC);
+            txTextOut(500,530,xM);
+            txTextOut(500,560,yM);
+
+        }
+        if(page == "dom")
+        {
+        txBitBlt(txDC(),xL,yL,2948,1716,location);
+        txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+        txBitBlt(txDC(),550,475,720,469,dialog);
+        btnV1.draw();
+        btnV2.draw();
+        nKad=0;
+        txSetColor(RGB(133, 98, 37));
+        txSetFillColor(RGB(150, 108, 33));
+        txSelectFont ("Comic Sans MS", 50);
+        txTextOut(570,500,"œË‚ÂÚ ÍÓÚÂÌÓÍ, ˜ÚÓ Ú˚ ÚÛÚ ‰ÂÎ‡Â¯¸?");
+
+        if( txMouseButtons() == 1 and
+                btnV1.x < txMouseX() and txMouseX() < btnV1.w + btnV1.x and
+                btnV1.y < txMouseY() and txMouseY() < btnV1.y + btnV1.h)
+            {
+
+            }
+        if( txMouseButtons() == 1 and
+                btnV2.x < txMouseX() and txMouseX() < btnV2.w + btnV2.x and
+                btnV2.y < txMouseY() and txMouseY() < btnV2.y + btnV2.h)
+            {
+            nKad = 2;
+            txTextOut(570,500,"— ◊≈√Œ “€ ÿ»œ»ÿ‹ Õ¿ Ã≈Õﬂ\n""¿ ≈—À» ” “≈¡ﬂ ¡≈ÿ≈ÕÕŒ—“‹,  €ÿ Œ“ —ﬁƒ¿");
+            txSleep(4500);
+            page = "lose";
+            }
+
+
+
+        int xMouse = txMouseX();
+        int yMouse = txMouseY();
+        sprintf(xM, "Xm - %d", xMouse);
+        sprintf(yM, "Ym - %d", yMouse);
+        txTextOut(500,530,xM);
+        txTextOut(500,560,yM);
+        }
+
+        if(page == "lose")
+        {
+        txTransparentBlt(txDC(),200,200, 800,800,Lose, 0, 0,RGB(0,0,255));
+        txSelectFont ("Comic Sans MS", 150);
+        txSetColor(TX_WHITE,4);
+        txTextOut(980,310,"“˚ ÔÓË„‡Î)");
         }
 
 
@@ -255,6 +322,9 @@ txDeleteDC(cat.RD);
 txDeleteDC(cat.LU);
 txDeleteDC(cat.LD);
 txDeleteDC(location);
+txDeleteDC(dialog);
+txDeleteDC(granny);
+txDeleteDC(Lose);
 txDisableAutoPause();
 txTextCursor (false);
 return 0;
