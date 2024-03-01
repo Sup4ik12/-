@@ -55,7 +55,9 @@ int main()
     string page = "menu";
 
     HDC location=txLoadImage("лока/лока.bmp");
+    HDC house=txLoadImage("лока/дом.bmp");
     cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,150,150,800,425,15,cat.v/1.5,cat.v,cat.v/1.5};
+    HDC granny=txLoadImage("бабуля.bmp");
 
     int xL = 0; int yL = 0;
     int nKad = 0;
@@ -88,7 +90,7 @@ int main()
                 btnSt.x < txMouseX() and txMouseX() < btnSt.w + btnSt.x and
                 btnSt.y < txMouseY() and txMouseY() < btnSt.y + btnSt.h)
             {
-                page = "game";
+                page = "street";
             }
             if( txMouseButtons() == 1 and
                 btnHe.x < txMouseX() and txMouseX() < btnHe.w + btnHe.x and
@@ -107,6 +109,7 @@ int main()
         if(page == "help")
         {
             btnEx.draw();
+            txSetColor(TX_WHITE);
             txDrawText(500,500,1000,1000,"ну сам как-нибудь");
             if( txMouseButtons() == 1 and
                 btnEx.x < txMouseX() and txMouseX() < btnEx.w + btnEx.x and
@@ -117,38 +120,37 @@ int main()
         }
 
         //игра
-        if(page == "game")
+        if(page == "street")
         {
-            txBitBlt(txDC(),xL,yL,4860,2896,location);
+            txBitBlt(txDC(),xL,yL,2948,1716,location);
             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 150*nKad, 0,RGB(150,150,100));
             if(GetAsyncKeyState ('P'))
             {
                page = "exit";
             }
-
             if(xL>0)
             {
                 cat.vL=0;
-                cat.vL1=0;
                 cat.v=15;
-                cat.v1=15;
+                yL=0;
             }
             if(yL>0)
             {
-                cat.vL=0;
                 cat.vL1=0;
-                cat.v=15;
                 cat.v1=15;
+                yL=0;
             }
-              if(cat.v == 15 and cat.x-xL>800 and cat.y-yL>425)
+
+            if(cat.x-xL>800)
             {
                 cat.v=0;
-                cat.v1=0;
                 cat.vL=15;
+            }
+            if(cat.y-yL>425)
+            {
+                cat.v1=0;
                 cat.vL1=15;
             }
-
-
             if(GetAsyncKeyState ('W') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
             {
                cat.image=cat.U;
@@ -226,6 +228,15 @@ int main()
                 {
                     nKad = 0;
                 }
+            if (txMouseButtons() == 2 and
+                823 <= txMouseX() and txMouseX() <= 947 and
+                398 <= txMouseY() and txMouseY() <= 515 and
+                2600 <= cat.x-xL and cat.x-xL <= 2700 and
+                540 <= cat.y-yL and cat.y-yL <= 560)
+            {
+                page = "dom";
+            }
+
 
             sprintf(xC, "X - %d", cat.x-xL);
             sprintf(yC, "Y - %d", cat.y-yL);
@@ -238,6 +249,12 @@ int main()
             txTextOut(500,470,xC);
             txTextOut(500,530,xM);
             txTextOut(500,560,yM);
+
+        }
+        if(page == "dom")
+        {
+        txBitBlt(txDC(),0,0,1920,1080,house);
+        txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
 
         }
 
