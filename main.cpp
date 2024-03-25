@@ -60,13 +60,16 @@ int main()
 
     HDC location=txLoadImage("лока/лока.bmp");
     HDC house=txLoadImage("лока/дом.bmp");
+    HDC kushat=txLoadImage("лока/кушац.bmp");
     cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,150,150,800,425,15,cat.v/1.5,cat.v,cat.v/1.5};
     HDC granny=txLoadImage("бабул€.bmp");
     HDC dialog=txLoadImage("диалог.bmp");
     HDC Lose=txLoadImage("котѕлакѕлак.bmp");
+    HDC plate=txLoadImage("тарелочка.bmp");
 
     int xL = 0; int yL = 0;
     int nKad = 0;
+
 
     button btnSt = {500,250,150,75,"—“ј–“",TX_WHITE,TX_RED,30};
     button btnHe = {750,500,150,75,"ѕјћј√»“≈",TX_WHITE,TX_RED,30};
@@ -262,7 +265,7 @@ int main()
         }
         if(page == "dom")
         {
-        txBitBlt(txDC(),xL,yL,2948,1716,location);
+        txBitBlt(txDC(),0,0,1920,1080,house);
         txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
         txBitBlt(txDC(),550,475,720,469,dialog);
         btnV1.draw();
@@ -277,7 +280,10 @@ int main()
                 btnV1.x < txMouseX() and txMouseX() < btnV1.w + btnV1.x and
                 btnV1.y < txMouseY() and txMouseY() < btnV1.y + btnV1.h)
             {
-
+                txBitBlt(txDC(),550,475,720,469,dialog);
+                txDrawText(570,500,1250,950,"ќй какой миленький котик, давай \n" "€ тебе молочка налью");
+                txSleep(2000);
+                page = "havat";
             }
         if( txMouseButtons() == 1 and
                 btnV2.x < txMouseX() and txMouseX() < btnV2.w + btnV2.x and
@@ -302,7 +308,7 @@ int main()
 
         if(page == "lose")
         {
-        txSetColor(TX_BLACK);
+        txSetFillColor(TX_BLACK);
         txClear();
         txTransparentBlt(txDC(),200,200, 800,800,Lose, 0, 0,RGB(0,0,255));
         txSelectFont ("Comic Sans MS", 150);
@@ -310,6 +316,22 @@ int main()
         txTextOut(980,310,"“ы проиграл)");
         txSleep(4000);
         page = "exit";
+        }
+
+        if(page == "havat")
+        {
+            txBitBlt(txDC(),0,0,1920,1080,kushat);
+            txTransparentBlt(txDC(),833,751, 375,257,plate, 375*nKad, 0,RGB(0,0,255));
+            nKad = 0;
+            if(txMouseButtons() == 1 and nKad<4)
+            {
+                nKad += 1;
+            }
+            if(nKad==4)
+                {
+                    page = "dom";
+                }
+
         }
 
 
@@ -330,6 +352,8 @@ txDeleteDC(location);
 txDeleteDC(dialog);
 txDeleteDC(granny);
 txDeleteDC(Lose);
+txDeleteDC(plate);
+txDeleteDC(kushat);
 txDisableAutoPause();
 txTextCursor (false);
 return 0;
