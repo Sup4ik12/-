@@ -474,3 +474,861 @@ Run file:	D:\Козлов Кирилл\игра\--main\bin\Debug\Игрунька.exe
 Directory:	D:\Козлов Кирилл\игра\--main
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {1400, 0, 1750, 350} не полностью лежит внутри изображения-источника {0, 0, 1050, 350}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x1F1C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041E008 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (270):
+
+    268:         {
+    269:         txBitBlt(txDC(),0,0,1920,1080,house);
+=>  270:         txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+    271:         txBitBlt(txDC(),550,475,720,469,dialog);
+    272:         btnV1.draw();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 17:31:15, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 17:31:36
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {1050, 0, 1400, 350} не полностью лежит внутри изображения-источника {0, 0, 1050, 350}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x1EFC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041E008 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (270):
+
+    268:         {
+    269:         txBitBlt(txDC(),0,0,1920,1080,house);
+=>  270:         txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+    271:         txBitBlt(txDC(),550,475,720,469,dialog);
+    272:         btnV1.draw();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 17:34:10, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 17:34:30
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {1050, 0, 1400, 350} не полностью лежит внутри изображения-источника {0, 0, 1050, 350}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x1EFC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041E008 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (270):
+
+    268:         {
+    269:         txBitBlt(txDC(),0,0,1920,1080,house);
+=>  270:         txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+    271:         txBitBlt(txDC(),550,475,720,469,dialog);
+    272:         btnV1.draw();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 17:34:10, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 17:34:30
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {1050, 0, 1400, 350} не полностью лежит внутри изображения-источника {0, 0, 1050, 350}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0xE0C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041E008 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (270):
+
+    268:         {
+    269:         txBitBlt(txDC(),0,0,1920,1080,house);
+=>  270:         txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+    271:         txBitBlt(txDC(),550,475,720,469,dialog);
+    272:         btnV1.draw();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 17:40:18, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 17:40:38
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {1050, 0, 1400, 350} не полностью лежит внутри изображения-источника {0, 0, 1050, 350}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x1B2C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041ED3E in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (336):
+
+    334:                     txSleep(250);
+    335:                     txBitBlt(txDC(),0,0,1920,1080,house);
+=>  336:                     txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+    337:                     txBitBlt(txDC(),550,475,720,469,dialog);
+    338:                     txTextOut(570,500,"Ну иди погуляй");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 17:50:12, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 17:50:33
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {1050, 0, 1400, 350} не полностью лежит внутри изображения-источника {0, 0, 1050, 350}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x1B2C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041ED3E in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (336):
+
+    334:                     txSleep(250);
+    335:                     txBitBlt(txDC(),0,0,1920,1080,house);
+=>  336:                     txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+    337:                     txBitBlt(txDC(),550,475,720,469,dialog);
+    338:                     txTextOut(570,500,"Ну иди погуляй");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 17:50:12, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 17:50:33
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {1050, 0, 1400, 350} не полностью лежит внутри изображения-источника {0, 0, 1050, 350}, функция txTransparentBlt() работать не будет.
+
+#3: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x1B2C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041ED3E in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (336):
+
+    334:                     txSleep(250);
+    335:                     txBitBlt(txDC(),0,0,1920,1080,house);
+=>  336:                     txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+    337:                     txBitBlt(txDC(),550,475,720,469,dialog);
+    338:                     txTextOut(570,500,"Ну иди погуляй");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 17:50:12, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 17:50:33
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {1050, 0, 1400, 350} не полностью лежит внутри изображения-источника {0, 0, 1050, 350}, функция txTransparentBlt() работать не будет.
+
+#4: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x1B2C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041ED3E in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (336):
+
+    334:                     txSleep(250);
+    335:                     txBitBlt(txDC(),0,0,1920,1080,house);
+=>  336:                     txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+    337:                     txBitBlt(txDC(),550,475,720,469,dialog);
+    338:                     txTextOut(570,500,"Ну иди погуляй");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 17:50:12, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 17:50:34
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {1875, 0, 2250, 257} не полностью лежит внутри изображения-источника {0, 0, 1875, 257}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x1E78 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041EBAE in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (327):
+
+    325:         {
+    326:             txBitBlt(txDC(),0,0,1920,1080,kushat);
+=>  327:             txTransparentBlt(txDC(),833,751, 375,257,plate, 375*nKad, 0,RGB(0,0,255));
+    328:             if(txMouseButtons() == 1)
+    329:             {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 17:55:26, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 17:55:48
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {1400, 0, 1750, 350} не полностью лежит внутри изображения-источника {0, 0, 1050, 350}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0xDBC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041E008 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (270):
+
+    268:         {
+    269:         txBitBlt(txDC(),0,0,1920,1080,house);
+=>  270:         txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+    271:         txBitBlt(txDC(),550,475,720,469,dialog);
+    272:         btnV1.draw();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 17:57:25, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 17:57:45
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {1400, 0, 1750, 350} не полностью лежит внутри изображения-источника {0, 0, 1050, 350}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0xDBC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041E008 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (270):
+
+    268:         {
+    269:         txBitBlt(txDC(),0,0,1920,1080,house);
+=>  270:         txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+    271:         txBitBlt(txDC(),550,475,720,469,dialog);
+    272:         btnV1.draw();
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 17:57:25, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 17:57:46
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {1400, 0, 1750, 350} не полностью лежит внутри изображения-источника {0, 0, 1050, 350}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x2BAC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041EDF8 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (341):
+
+    339:                     txSleep(250);
+    340:                     txBitBlt(txDC(),0,0,1920,1080,house);
+=>  341:                     txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+    342:                     txBitBlt(txDC(),550,475,720,469,dialog);
+    343:                     txTextOut(570,500,"Ну иди погуляй");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 18:06:09, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 18:06:30
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {600, 0, 750, 150} не полностью лежит внутри изображения-источника {0, 0, 450, 150}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x2BAC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041D66B in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (140):
+
+    138:         {
+    139:             txBitBlt(txDC(),xL,yL,2948,1716,location);
+=>  140:             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 150*nKad, 0,RGB(150,150,100));
+    141:             if(GetAsyncKeyState ('P'))
+    142:             {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 18:06:09, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 18:06:30
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#3: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x2BAC (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00416869 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0041DD11 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (255):
+
+    253:             if (popil == true)
+    254:             {
+=>  255:                 txTransparentBlt(txDC(),1080,575,200,106,cat2,0,0,RGB(0,0,255));
+    256:             }
+    257: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 18:06:09, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 18:06:30
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {1400, 0, 1750, 350} не полностью лежит внутри изображения-источника {0, 0, 1050, 350}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x600 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041EDF8 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (341):
+
+    339:                     txSleep(250);
+    340:                     txBitBlt(txDC(),0,0,1920,1080,house);
+=>  341:                     txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+    342:                     txBitBlt(txDC(),550,475,720,469,dialog);
+    343:                     txTextOut(570,500,"Ну иди погуляй");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 18:10:26, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 18:10:47
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {600, 0, 750, 150} не полностью лежит внутри изображения-источника {0, 0, 450, 150}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x600 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041D66B in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (140):
+
+    138:         {
+    139:             txBitBlt(txDC(),xL,yL,2948,1716,location);
+=>  140:             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 150*nKad, 0,RGB(150,150,100));
+    141:             if(GetAsyncKeyState ('P'))
+    142:             {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 18:10:26, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 18:10:47
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#3: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x600 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00416869 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0041DD11 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (255):
+
+    253:             if (popil == true)
+    254:             {
+=>  255:                 txTransparentBlt(txDC(),1080,575,200,106,cat2,0,0,RGB(0,0,255));
+    256:             }
+    257: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 18:10:26, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 18:10:46
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {1400, 0, 1750, 350} не полностью лежит внутри изображения-источника {0, 0, 1050, 350}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x2774 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041EDF8 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (341):
+
+    339:                     txSleep(250);
+    340:                     txBitBlt(txDC(),0,0,1920,1080,house);
+=>  341:                     txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+    342:                     txBitBlt(txDC(),550,475,720,469,dialog);
+    343:                     txTextOut(570,500,"Ну иди погуляй");
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 18:12:34, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 18:12:55
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {600, 0, 750, 150} не полностью лежит внутри изображения-источника {0, 0, 450, 150}, функция txTransparentBlt() работать не будет.
+
+#2: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x2774 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041D66B in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (140):
+
+    138:         {
+    139:             txBitBlt(txDC(),xL,yL,2948,1716,location);
+=>  140:             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 150*nKad, 0,RGB(150,150,100));
+    141:             if(GetAsyncKeyState ('P'))
+    142:             {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 18:12:34, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 18:12:55
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#3: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x2774 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00416869 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0041DD11 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (255):
+
+    253:             if (popil == true)
+    254:             {
+=>  255:                 txTransparentBlt(txDC(),1080,575,200,106,cat2,0,0,RGB(0,0,255));
+    256:             }
+    257: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 18:12:34, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 18:12:55
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13657, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Параметр "sourceImage" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x1810 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00416869 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13657)
+
+# 1 0x0041DD11 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (255):
+
+    253:             if (popil == true)
+    254:             {
+=>  255:                 txTransparentBlt(txDC(),1080,575,200,106,cat2,0,0,RGB(0,0,255));
+    256:             }
+    257: 
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 18:20:06, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 18:20:27
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib сообщает:
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 13678, функция: bool {anonymous}::TX::txTransparentBlt(HDC, double, double, double, double, HDC, double, double, COLORREF),
+
+Сообщение: Прямоугольник копируемой области {450, 0, 600, 150} не полностью лежит внутри изображения-источника {0, 0, 450, 150}, функция txTransparentBlt() работать не будет.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F62FC (32-bit), Flags: CMdRe0, Thread: 0x1DD8 (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x004169B9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txTransparentBlt() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13678)
+
+# 1 0x0041D66B in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (139):
+
+    137:         {
+    138:             txBitBlt(txDC(),xL,yL,2948,1716,location);
+=>  139:             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 150*nKad, 0,RGB(150,150,100));
+    140:             if(GetAsyncKeyState ('P'))
+    141:             {
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Mar 25 2024 18:23:21, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Mar 25 2024 18:23:41
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------

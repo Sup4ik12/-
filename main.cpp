@@ -66,9 +66,11 @@ int main()
     HDC dialog=txLoadImage("диалог.bmp");
     HDC Lose=txLoadImage("котѕлакѕлак.bmp");
     HDC plate=txLoadImage("тарелочка.bmp");
+    HDC cat2 = txLoadImage("cat/кошка.bmp");
 
     int xL = 0; int yL = 0;
     int nKad = 0;
+    bool popil = false;
 
 
     button btnSt = {500,250,150,75,"—“ј–“",TX_WHITE,TX_RED,30};
@@ -76,7 +78,6 @@ int main()
     button btnEx = {1000,750,150,75,"”…“»",TX_WHITE,TX_RED,30};
     button btnV1 = {600,575,200,75,"ћя”",RGB(227, 185, 109),RGB(133, 98, 37),100};
     button btnV2 = {600,700,200,75,"*«јЎ»ѕ≈“№*",RGB(227, 185, 109),RGB(133, 98, 37),38};
-
 
     cat.drawCat();
 
@@ -134,13 +135,13 @@ int main()
         //игра
         if(page == "street")
         {
-            txBitBlt(txDC(),xL,yL,2948,1716,location);
+            txBitBlt(txDC(),xL,yL,1920,1080,location);
             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 150*nKad, 0,RGB(150,150,100));
             if(GetAsyncKeyState ('P'))
             {
                page = "exit";
             }
-            if(xL>0)
+          /*  if(xL>0)
             {
                 cat.vL=0;
                 cat.v=15;
@@ -162,12 +163,11 @@ int main()
             {
                 cat.v1=0;
                 cat.vL1=15;
-            }
+            }    */
             if(GetAsyncKeyState ('W') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
             {
                cat.image=cat.U;
                cat.y -= cat.v;
-               yL += cat.vL;
                nKad += 1;
                 if (nKad>=3) nKad=0;
             }
@@ -248,7 +248,10 @@ int main()
             {
                 page = "dom";
             }
-
+            if (popil == true)
+            {
+                txTransparentBlt(txDC(),1080,575,200,106,cat2,0,0,RGB(0,0,255));
+            }
 
             sprintf(xC, "X - %d", cat.x-xL);
             sprintf(yC, "Y - %d", cat.y-yL);
@@ -263,6 +266,7 @@ int main()
             txTextOut(500,560,yM);
 
         }
+
         if(page == "dom")
         {
         txBitBlt(txDC(),0,0,1920,1080,house);
@@ -298,6 +302,7 @@ int main()
 
 
 
+
         int xMouse = txMouseX();
         int yMouse = txMouseY();
         sprintf(xM, "Xm - %d", xMouse);
@@ -305,6 +310,7 @@ int main()
         txTextOut(500,530,xM);
         txTextOut(500,560,yM);
         }
+
 
         if(page == "lose")
         {
@@ -320,19 +326,31 @@ int main()
 
         if(page == "havat")
         {
+            popil = true;
             txBitBlt(txDC(),0,0,1920,1080,kushat);
             txTransparentBlt(txDC(),833,751, 375,257,plate, 375*nKad, 0,RGB(0,0,255));
-            nKad = 0;
-            if(txMouseButtons() == 1 and nKad<4)
+            if(GetAsyncKeyState ('Y'))
+            {
+                page = "street";
+            }
+            if(txMouseButtons() == 1)
             {
                 nKad += 1;
             }
-            if(nKad==4)
+            if (nKad >= 4)
                 {
-                    page = "dom";
+                    txSleep(250);
+                    txBitBlt(txDC(),0,0,1920,1080,house);
+                    txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+                    txBitBlt(txDC(),550,475,720,469,dialog);
+                    txTextOut(570,500,"Ќу иди погул€й");
+                    page = "street";
+
                 }
 
+
         }
+
 
 
         txEnd();
