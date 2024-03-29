@@ -61,16 +61,20 @@ int main()
     HDC location=txLoadImage("лока/лока.bmp");
     HDC house=txLoadImage("лока/дом.bmp");
     HDC kushat=txLoadImage("лока/кушац.bmp");
-    cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,150,150,800,425,15,cat.v/1.5,cat.v,cat.v/1.5};
+    cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,83.3,83.3,800,425,15,cat.v/1.5,cat.v,cat.v/1.5};
     HDC granny=txLoadImage("бабул€.bmp");
     HDC dialog=txLoadImage("диалог.bmp");
     HDC Lose=txLoadImage("котѕлакѕлак.bmp");
     HDC plate=txLoadImage("тарелочка.bmp");
     HDC cat2 = txLoadImage("cat/кошка.bmp");
+    HDC Icat = txLoadImage("иконки/кот»конка.bmp");
+    HDC Icat2= txLoadImage("иконки/кошка»конка.bmp");
 
-    int xL = 0; int yL = 0;
+    int xL = -30; int yL = 0;
     int nKad = 0;
+    int nK = 0;
     bool popil = false;
+    int r = 0.7;
 
 
     button btnSt = {500,250,150,75,"—“ј–“",TX_WHITE,TX_RED,30};
@@ -136,7 +140,7 @@ int main()
         if(page == "street")
         {
             txBitBlt(txDC(),xL,yL,1920,1080,location);
-            txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 150*nKad, 0,RGB(150,150,100));
+            txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 83.3*nKad, 0,RGB(150,150,100));
             if(GetAsyncKeyState ('P'))
             {
                page = "exit";
@@ -175,14 +179,12 @@ int main()
             {
                 cat.image = cat.D;
                 cat.y += cat.v;
-                yL -= cat.vL;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
             if(GetAsyncKeyState ('A') and !GetAsyncKeyState ('S') and !GetAsyncKeyState ('W'))
             {
                 cat.image = cat.L;
-                xL+=cat.vL;
                 cat.x -= cat.v;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
@@ -191,7 +193,6 @@ int main()
             if(GetAsyncKeyState ('D') and !GetAsyncKeyState ('S') and !GetAsyncKeyState ('W'))
             {
                 cat.image = cat.R;
-                xL-=cat.vL;
                 cat.x += cat.v;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
@@ -199,8 +200,6 @@ int main()
             if(GetAsyncKeyState ('D') and GetAsyncKeyState ('S'))
             {
                 cat.image = cat.RD;
-                xL-=cat.vL1;
-                yL -= cat.vL1;
                 cat.x += cat.v;
                 cat.y += cat.v;
                 nKad += 1;
@@ -209,8 +208,6 @@ int main()
             if(GetAsyncKeyState ('D') and GetAsyncKeyState ('W'))
             {
                 cat.image = cat.RU ;
-                xL-=cat.vL1;
-                yL += cat.vL1;
                 cat.x += cat.v;
                 cat.y -= cat.v;
                 nKad += 1;
@@ -219,8 +216,6 @@ int main()
             if(GetAsyncKeyState ('A') and GetAsyncKeyState ('S'))
             {
                 cat.image = cat.LD ;
-                xL+=cat.vL1;
-                yL -= cat.vL1;
                 cat.x -= cat.v;
                 cat.y += cat.v;
                 nKad += 1;
@@ -229,8 +224,6 @@ int main()
             if(GetAsyncKeyState ('A') and GetAsyncKeyState ('W'))
             {
                 cat.image = cat.LU ;
-                xL+=cat.vL1;
-                yL += cat.vL1;
                 cat.x -= cat.v;
                 cat.y -= cat.v;
                 nKad += 1;
@@ -250,7 +243,13 @@ int main()
             }
             if (popil == true)
             {
-                txTransparentBlt(txDC(),1080,575,200,106,cat2,0,0,RGB(0,0,255));
+                cat.x = 1550;
+                cat.y = 425;
+                txTransparentBlt(txDC(),650,386,93,50,cat2,0,0,RGB(0,0,0));
+                if(cat.x < 1130 and cat.y < 530)
+                {
+                    page = "сцена";
+                }
             }
 
             sprintf(xC, "X - %d", cat.x-xL);
@@ -328,27 +327,43 @@ int main()
         {
             popil = true;
             txBitBlt(txDC(),0,0,1920,1080,kushat);
-            txTransparentBlt(txDC(),833,751, 375,257,plate, 375*nKad, 0,RGB(0,0,255));
-            if(GetAsyncKeyState ('Y'))
-            {
-                page = "street";
-            }
+            txTransparentBlt(txDC(),833,751, 375,257,plate, 375*nK, 0,RGB(0,0,255));
             if(txMouseButtons() == 1)
             {
-                nKad += 1;
+                nK += 1;
             }
-            if (nKad >= 4)
+            if (nK > 4)
                 {
-                    txSleep(250);
                     txBitBlt(txDC(),0,0,1920,1080,house);
                     txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
                     txBitBlt(txDC(),550,475,720,469,dialog);
                     txTextOut(570,500,"Ќу иди погул€й");
+                    txSleep(2500);
                     page = "street";
 
                 }
 
 
+        }
+        if(page == "сцена")
+        {
+            txBitBlt(txDC(),xL,yL,1920,1080,location);
+            nKad = 0;
+            txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 83.3*nKad, 0,RGB(150,150,100));
+            txTransparentBlt(txDC(),650,386,93,50,cat2,0,0,RGB(0,0,0));
+            if(GetAsyncKeyState ('A') and cat.x > 820)
+            {
+                cat.image = cat.L;
+                cat.x -= cat.v;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+            }
+            else
+            {
+            txBitBlt (txDC(),800,475,720,469,dialog);
+            txTransparentBlt(txDC(),590,450,200,200,Icat,0,0,RGB(50,201,72));
+            txTransparentBlt(txDC(),590,450,200,175,Icat2,0,0,RGB(50,201,72));
+            }
         }
 
 
@@ -372,6 +387,9 @@ txDeleteDC(granny);
 txDeleteDC(Lose);
 txDeleteDC(plate);
 txDeleteDC(kushat);
+txDeleteDC(cat2);
+txDeleteDC(Icat);
+txDeleteDC(Icat2);
 txDisableAutoPause();
 txTextCursor (false);
 return 0;
