@@ -234,17 +234,15 @@ int main()
                     nKad = 0;
                 }
             if (txMouseButtons() == 2 and
-                823 <= txMouseX() and txMouseX() <= 947 and
-                398 <= txMouseY() and txMouseY() <= 515 and
-                2600 <= cat.x-xL and cat.x-xL <= 2700 and
-                540 <= cat.y-yL and cat.y-yL <= 560)
+                1725 <= txMouseX() and txMouseX() <= 1805 and
+                320 <= txMouseY() and txMouseY() <= 400 and
+                1700 <= cat.x and cat.x <= 1775 and
+                350 <= cat.y and cat.y <= 380)
             {
                 page = "dom";
             }
             if (popil == true)
             {
-                cat.x = 1550;
-                cat.y = 425;
                 txTransparentBlt(txDC(),650,386,93,50,cat2,0,0,RGB(0,0,0));
                 if(cat.x < 1130 and cat.y < 530)
                 {
@@ -252,8 +250,8 @@ int main()
                 }
             }
 
-            sprintf(xC, "X - %d", cat.x-xL);
-            sprintf(yC, "Y - %d", cat.y-yL);
+            sprintf(xC, "X - %d", cat.x);
+            sprintf(yC, "Y - %d", cat.y);
             int xMouse = txMouseX();
             int yMouse = txMouseY();
             sprintf(xM, "Xm - %d", xMouse);
@@ -351,19 +349,30 @@ int main()
             nKad = 0;
             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 83.3*nKad, 0,RGB(150,150,100));
             txTransparentBlt(txDC(),650,386,93,50,cat2,0,0,RGB(0,0,0));
-            if(GetAsyncKeyState ('A') and cat.x > 820)
-            {
-                cat.image = cat.L;
-                cat.x -= cat.v;
-                nKad += 1;
-                if (nKad>=3) nKad=0;
-            }
-            else
-            {
+            while (cat.x > 820)
+                {
+                txBegin();
+                    if(GetAsyncKeyState ('A'))
+                        {
+                            cat.image = cat.L;
+                            cat.x -= cat.v;
+                            nKad += 1;
+                            if (nKad>=3) nKad=0;
+                        }
+                txEnd();
+                txSleep(10);
+                }
             txBitBlt (txDC(),800,475,720,469,dialog);
             txTransparentBlt(txDC(),590,450,200,200,Icat,0,0,RGB(50,201,72));
             txTransparentBlt(txDC(),590,450,200,175,Icat2,0,0,RGB(50,201,72));
-            }
+            txSetColor(RGB(133, 98, 37));
+            txSetFillColor(RGB(150, 108, 33));
+            txSelectFont ("Comic Sans MS", 50);
+            txTextOut(570,500,"?");
+
+
+
+
         }
 
 
