@@ -51,6 +51,44 @@ struct button
      txDrawText(x, y, x+w, y+h, text);
     }
 };
+struct Icon
+{
+    int x;
+    int y;
+    int w;
+    int h;
+    HDC image;
+    bool draw;
+
+    void paint()
+    {
+        if(draw == true)
+        {
+            txTransparentBlt(txDC(),x,y,w,h,image,0,0,RGB(50,201,72));
+        }
+    }
+};
+struct dialog
+{
+    int x;
+    int y;
+    int w;
+    int h;
+    HDC image;
+    const char* text;
+    int r;
+    COLORREF colorVny;
+    COLORREF colorVne;
+
+    void draw()
+    {
+        txBitBlt(txDC(),x,y,w,h,image);
+        txSetColor(colorVne);
+        txSetFillColor(colorVny);
+        txSelectFont ("Comic Sans MS", r);
+        txDrawText(x+20,y+25,x+w-25,y+h-100,text);
+    }
+};
 int main()
 {
     txCreateWindow (1920, 1080);
@@ -63,24 +101,25 @@ int main()
     HDC kushat=txLoadImage("лока/кушац.bmp");
     cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,83.3,83.3,800,425,15,cat.v/1.5,cat.v,cat.v/1.5};
     HDC granny=txLoadImage("бабул€.bmp");
-    HDC dialog=txLoadImage("диалог.bmp");
     HDC Lose=txLoadImage("котѕлакѕлак.bmp");
     HDC plate=txLoadImage("тарелочка.bmp");
     HDC cat2 = txLoadImage("cat/кошка.bmp");
-    HDC Icat = txLoadImage("иконки/кот»конка.bmp");
-    HDC Icat2= txLoadImage("иконки/кошка»конка.bmp");
 
-    int xL = -30; int yL = 0;
+    int xL = -50; int yL = 0;
     int nKad = 0;
     int nK = 0;
     bool popil = false;
     int r = 0.7;
 
+    Icon c1 = {590,450,200,200,txLoadImage("иконки/кот»конка.bmp"),false};
+    Icon c2 = {590,450,200,200,txLoadImage("иконки/кошка»конка.bmp"),true};
+
+    dialog DI = {1,1,720,469,txLoadImage("диалог.bmp"),"d",50,RGB(150, 108, 33),RGB(133, 98, 37)};
 
     button btnSt = {500,250,150,75,"—“ј–“",TX_WHITE,TX_RED,30};
     button btnHe = {750,500,150,75,"ѕјћј√»“≈",TX_WHITE,TX_RED,30};
     button btnEx = {1000,750,150,75,"”…“»",TX_WHITE,TX_RED,30};
-    button btnV1 = {600,575,200,75,"ћя”",RGB(227, 185, 109),RGB(133, 98, 37),100};
+    button btnV1 = {850,700,200,75,"ћя”",RGB(227, 185, 109),RGB(133, 98, 37),100};
     button btnV2 = {600,700,200,75,"*«јЎ»ѕ≈“№*",RGB(227, 185, 109),RGB(133, 98, 37),38};
 
     cat.drawCat();
@@ -91,12 +130,20 @@ int main()
     char xM[50];
 
 
+
+
     while (page != "exit")
     {
         txSetFillColor(TX_BLACK);
         txClear();
         txBegin();
         txSetFillColor (TX_WHITE);
+
+        if(GetAsyncKeyState ('P'))
+            {
+               page = "exit";
+            }
+
          //меню
         if(page == "menu")
         {
@@ -141,33 +188,6 @@ int main()
         {
             txBitBlt(txDC(),xL,yL,1920,1080,location);
             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 83.3*nKad, 0,RGB(150,150,100));
-            if(GetAsyncKeyState ('P'))
-            {
-               page = "exit";
-            }
-          /*  if(xL>0)
-            {
-                cat.vL=0;
-                cat.v=15;
-                yL=0;
-            }
-            if(yL>0)
-            {
-                cat.vL1=0;
-                cat.v1=15;
-                yL=0;
-            }
-
-            if(cat.x-xL>800)
-            {
-                cat.v=0;
-                cat.vL=15;
-            }
-            if(cat.y-yL>425)
-            {
-                cat.v1=0;
-                cat.vL1=15;
-            }    */
             if(GetAsyncKeyState ('W') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
             {
                cat.image=cat.U;
@@ -268,21 +288,15 @@ int main()
         {
         txBitBlt(txDC(),0,0,1920,1080,house);
         txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
-        txBitBlt(txDC(),550,475,720,469,dialog);
+        DI.x = 550; DI.y = 475; DI.r = 50; DI.draw(); DI.text = "ѕривет котенок, что ты тут делаешь?";
         btnV1.draw();
         btnV2.draw();
         nKad=0;
-        txSetColor(RGB(133, 98, 37));
-        txSetFillColor(RGB(150, 108, 33));
-        txSelectFont ("Comic Sans MS", 50);
-        txTextOut(570,500,"ѕривет котенок, что ты тут делаешь?");
-
         if( txMouseButtons() == 1 and
                 btnV1.x < txMouseX() and txMouseX() < btnV1.w + btnV1.x and
                 btnV1.y < txMouseY() and txMouseY() < btnV1.y + btnV1.h)
             {
-                txBitBlt(txDC(),550,475,720,469,dialog);
-                txDrawText(570,500,1250,950,"ќй какой миленький котик, давай \n" "€ тебе молочка налью");
+                DI.draw(); DI.text = "ќй какой миленький котик, давай \n" "€ тебе молочка налью";
                 txSleep(2000);
                 page = "havat";
             }
@@ -290,22 +304,11 @@ int main()
                 btnV2.x < txMouseX() and txMouseX() < btnV2.w + btnV2.x and
                 btnV2.y < txMouseY() and txMouseY() < btnV2.y + btnV2.h)
             {
-            txBitBlt(txDC(),550,475,720,469,dialog);
+            DI.draw();  DI.text = "— „≈√ќ “џ Ў»ѕ»Ў№ Ќј ћ≈Ќя\n" "ј ≈—Ћ» ” “≈Ѕя Ѕ≈Ў≈ЌЌќ—“№,  џЎ ќ“ —ёƒј";
             nKad = 2;
-            txDrawText(570,500,1250,950,"— „≈√ќ “џ Ў»ѕ»Ў№ Ќј ћ≈Ќя\n" "ј ≈—Ћ» ” “≈Ѕя Ѕ≈Ў≈ЌЌќ—“№,  џЎ ќ“ —ёƒј");
             txSleep(4500);
             page = "lose";
             }
-
-
-
-
-        int xMouse = txMouseX();
-        int yMouse = txMouseY();
-        sprintf(xM, "Xm - %d", xMouse);
-        sprintf(yM, "Ym - %d", yMouse);
-        txTextOut(500,530,xM);
-        txTextOut(500,560,yM);
         }
 
 
@@ -334,8 +337,7 @@ int main()
                 {
                     txBitBlt(txDC(),0,0,1920,1080,house);
                     txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
-                    txBitBlt(txDC(),550,475,720,469,dialog);
-                    txTextOut(570,500,"Ќу иди погул€й");
+                    DI.draw(); DI.text = "Ќу иди погул€й";
                     txSleep(2500);
                     page = "street";
 
@@ -349,30 +351,23 @@ int main()
             nKad = 0;
             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 83.3*nKad, 0,RGB(150,150,100));
             txTransparentBlt(txDC(),650,386,93,50,cat2,0,0,RGB(0,0,0));
-            while (cat.x > 820)
-                {
-                txBegin();
-                    if(GetAsyncKeyState ('A'))
-                        {
-                            cat.image = cat.L;
-                            cat.x -= cat.v;
-                            nKad += 1;
-                            if (nKad>=3) nKad=0;
-                        }
-                txEnd();
-                txSleep(10);
-                }
-            txBitBlt (txDC(),800,475,720,469,dialog);
-            txTransparentBlt(txDC(),590,450,200,200,Icat,0,0,RGB(50,201,72));
-            txTransparentBlt(txDC(),590,450,200,175,Icat2,0,0,RGB(50,201,72));
-            txSetColor(RGB(133, 98, 37));
-            txSetFillColor(RGB(150, 108, 33));
-            txSelectFont ("Comic Sans MS", 50);
-            txTextOut(570,500,"?");
 
-
-
-
+            if(GetAsyncKeyState ('A') and cat.x > 820)
+            {
+                cat.image = cat.L;
+                cat.x -= cat.v;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+            }
+            if (cat.x < 820)
+            {
+                DI.draw();  DI.text = "?"; DI.x = 800; DI.y = 475;
+                c1.paint(); c2.paint(); c1.draw = false; c2.draw = true;
+                txSleep(750);
+                DI.draw(); DI.text = "“ы должно быть здесь новенький, \n" "такой расскраски котов не было еще";
+                txSleep(1999);
+                DI.draw();
+            }
         }
 
 
@@ -391,14 +386,14 @@ txDeleteDC(cat.RD);
 txDeleteDC(cat.LU);
 txDeleteDC(cat.LD);
 txDeleteDC(location);
-txDeleteDC(dialog);
+txDeleteDC(DI.image);
 txDeleteDC(granny);
 txDeleteDC(Lose);
 txDeleteDC(plate);
 txDeleteDC(kushat);
 txDeleteDC(cat2);
-txDeleteDC(Icat);
-txDeleteDC(Icat2);
+txDeleteDC(c1.image);
+txDeleteDC(c2.image);
 txDisableAutoPause();
 txTextCursor (false);
 return 0;
