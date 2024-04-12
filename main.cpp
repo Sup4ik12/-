@@ -92,6 +92,19 @@ struct dialog
         txDrawText(x+20,y+25,x+w-25,y+h-100,text);
     }
 };
+struct gran
+{
+    int x;
+    int y;
+    int w;
+    int h;
+    int n;
+    HDC image;
+    void draw()
+    {
+        txTransparentBlt(txDC(),x,y, w,h,image, w*n, 0,RGB(150,150,150));
+    }
+};
 int main()
 {
     txCreateWindow (1920, 1080);
@@ -103,7 +116,6 @@ int main()
     HDC house=txLoadImage("лока/дом.bmp");
     HDC kushat=txLoadImage("лока/кушац.bmp");
     cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,83.3,83.3,800,425,15,cat.v/1.5,cat.v,cat.v/1.5};
-    HDC granny=txLoadImage("бабуля.bmp");
     HDC Lose=txLoadImage("котПлакПлак.bmp");
     HDC plate=txLoadImage("тарелочка.bmp");
     HDC cat2 = txLoadImage("cat/кошка.bmp");
@@ -112,17 +124,19 @@ int main()
     int xL = 0; int yL = 0;
     int nKad = 0;
     int nK = 0;
-    int n = 0;
-    int n2 = 0;
     bool popil = false;
-    bool pred = false;
+    bool sten = false;
     int kadr =0;
     int r = 0.7;
+    bool kvest = false;
+    bool fight = false;
 
     Icon c1 = {590,450,200,200,txLoadImage("иконки/котИконка.bmp"),true};
     Icon c2 = {590,450,200,175,txLoadImage("иконки/кошкаИконка.bmp"),true};
 
     dialog DI = {1,1,720,469,txLoadImage("диалог.bmp"),"d",50,RGB(150, 108, 33),RGB(133, 98, 37)};
+
+    gran G = {150,450,350,350,0,txLoadImage("бабуля.bmp")};
 
     button btnSt = {500,250,150,75,"СТАРТ",TX_WHITE,TX_RED,30};
     button btnHe = {750,500,150,75,"ПАМАГИТЕ",TX_WHITE,TX_RED,30};
@@ -131,14 +145,6 @@ int main()
     button btnV2 = {600,700,200,75,"*ЗАШИПЕТЬ*",RGB(227, 185, 109),RGB(133, 98, 37),38};
 
     cat.drawCat();
-
-    char xC[50];
-    char yC[50];
-    char yM[50];
-    char xM[50];
-
-
-
 
     while (page != "exit")
     {
@@ -195,6 +201,10 @@ int main()
         if(page == "street")
         {
             txBitBlt(txDC(),xL,yL,1920,1080,location);
+            if(GetAsyncKeyState ('L') and GetAsyncKeyState ('O'))
+            {
+                page = "сцена";
+            }
             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 83.3*nKad, 0,RGB(150,150,100));
             if(GetAsyncKeyState ('W') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
             {
@@ -277,45 +287,83 @@ int main()
                     page = "сцена";
                 }
             }
-
-            sprintf(xC, "X - %d", cat.x);
-            sprintf(yC, "Y - %d", cat.y);
-            int xMouse = txMouseX();
-            int yMouse = txMouseY();
-            sprintf(xM, "Xm - %d", xMouse);
-            sprintf(yM, "Ym - %d", yMouse);
-            txSetColor(TX_WHITE,5);
-            txTextOut(500,500,yC);
-            txTextOut(500,470,xC);
-            txTextOut(500,530,xM);
-            txTextOut(500,560,yM);
-
+            if(sten == true)
+            {
+                popil = false;
+            }
         }
 
         if(page == "dom")
         {
-        txBitBlt(txDC(),0,0,1920,1080,house);
-        txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
-        DI.x = 550; DI.y = 475; DI.r = 50; DI.text = "Привет котенок, что ты тут делаешь?"; DI.draw();
-        btnV1.draw();
-        btnV2.draw();
-        nKad=0;
-        if( txMouseButtons() == 1 and
-                btnV1.x < txMouseX() and txMouseX() < btnV1.w + btnV1.x and
-                btnV1.y < txMouseY() and txMouseY() < btnV1.y + btnV1.h)
+            if (sten == false)
             {
-                DI.text = "Ой какой миленький котик, давай \n" "я тебе молочка налью";  DI.draw();
-                txSleep(2000);
-                page = "havat";
+                txBitBlt(txDC(),0,0,1920,1080,house);
+                G.draw();
+                DI.x = 550; DI.y = 475; DI.r = 50; DI.text = "Привет котенок, что ты тут делаешь?"; DI.draw();
+                btnV1.draw();
+                btnV2.draw();
+                nKad=0;
+                if( txMouseButtons() == 1 and
+                        btnV1.x < txMouseX() and txMouseX() < btnV1.w + btnV1.x and
+                        btnV1.y < txMouseY() and txMouseY() < btnV1.y + btnV1.h)
+                    {
+                        DI.text = "Ой какой миленький котик, давай \n" "я тебе молочка налью";  DI.draw();
+                        G.n = 2;
+                        txSleep(2000);
+                        page = "havat";
+                    }
+                if( txMouseButtons() == 1 and
+                        btnV2.x < txMouseX() and txMouseX() < btnV2.w + btnV2.x and
+                        btnV2.y < txMouseY() and txMouseY() < btnV2.y + btnV2.h)
+                    {
+                    DI.text = "С ЧЕГО ТЫ ШИПИШЬ НА МЕНЯ\n" "А ЕСЛИ У ТЕБЯ БЕШЕННОСТЬ, КЫШ ОТ СЮДА"; DI.draw();
+                    G.n = 1;
+                    txSleep(4500);
+                    page = "lose";
+                    }
             }
-        if( txMouseButtons() == 1 and
-                btnV2.x < txMouseX() and txMouseX() < btnV2.w + btnV2.x and
-                btnV2.y < txMouseY() and txMouseY() < btnV2.y + btnV2.h)
+            if(sten == true and page == "dom" and kvest != true and fight != true)
             {
-            DI.text = "С ЧЕГО ТЫ ШИПИШЬ НА МЕНЯ\n" "А ЕСЛИ У ТЕБЯ БЕШЕННОСТЬ, КЫШ ОТ СЮДА"; DI.draw();
-            nKad = 2;
-            txSleep(4500);
-            page = "lose";
+                txBitBlt(txDC(),0,0,1920,1080,house);
+                G.n = 0; G.draw();
+                DI.x = 550; DI.y = 475; DI.r = 50;
+                DI.text = "Чего вернулся, только поел жe";  DI.draw();
+                txSleep(1900);
+                DI.text = "."; DI.draw();
+                txSleep(650);
+                DI.text = ".."; DI.draw();
+                txSleep(650);
+                DI.text = "..."; DI.draw();
+                txSleep(650);
+                DI.text = "...."; DI.draw();
+                txSleep(650);
+                DI.text = "Aaaa, ты поселиться чтоли хочешь\n" "ко мне?"; DI.draw();
+                txSleep(500);
+                G.x = 10000; G.draw();
+                c1.x = 340; c1.draw = true; c1.paint();
+                btnV1.text = "кивнуть"; btnV2.text = "убежать"; btnV1.r = 50; btnV2.r = 50; btnV1.draw(); btnV2.draw();
+                if( txMouseButtons() == 1 and
+                    btnV1.x < txMouseX() and txMouseX() < btnV1.w + btnV1.x and
+                    btnV1.y < txMouseY() and txMouseY() < btnV1.y + btnV1.h)
+                {
+                    c1.draw = false;
+                    G.x = 150; G.draw();
+                    DI.text = "Ко мне просто так не заселиться \n" "тебе предстоит пройти испытания"; DI.draw();
+                    txSleep(3500);
+                    kvest = true;
+                }
+                if( txMouseButtons() == 1 and
+                    btnV2.x < txMouseX() and txMouseX() < btnV2.w + btnV2.x and
+                    btnV2.y < txMouseY() and txMouseY() < btnV2.y + btnV2.h)
+                {
+                    c1.draw = false;
+                    G.x = 150; G.draw();
+                    DI.text = "А, просто встретится. Ну ладно \n" "иди гуляй"; DI.draw();
+                    txSleep(2500);
+                    fight = true;
+                }
+                txSleep(123456789);
+
             }
         }
 
@@ -344,7 +392,7 @@ int main()
             if (nK > 4)
                 {
                     txBitBlt(txDC(),0,0,1920,1080,house);
-                    txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
+                    G.draw();
                     DI.text = "Ну иди погуляй"; DI.draw();
                     txSleep(2500);
                     page = "street";
@@ -392,7 +440,12 @@ int main()
             {
                 c2.paint();
                 DI.text = "О, это наша кормилица, она всех котят кормит.\n" "Кстати, тебе нужно найти укрытие к вечеру, по ночам у нас опасно коты бездомные ходят. \n " " Иди сходи к бабуле, может к ней получится поселиться"; DI.draw();
-                pred = true;
+                txSleep(4500);
+                sten = true;
+            }
+            if (sten == true)
+            {
+                page = "street";
             }
         }
 
@@ -413,7 +466,7 @@ txDeleteDC(cat.LU);
 txDeleteDC(cat.LD);
 txDeleteDC(location);
 txDeleteDC(DI.image);
-txDeleteDC(granny);
+txDeleteDC(G.image);
 txDeleteDC(Lose);
 txDeleteDC(plate);
 txDeleteDC(kushat);
