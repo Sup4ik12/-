@@ -9,7 +9,7 @@ struct cat
     HDC RD;
     HDC LD;
     HDC RU;
-    HDC LU;                                                 //ВЫТАЩИ ЛОКУ ИЗ АРХИВА
+    HDC LU;
     HDC image;
     int w;
     int h;
@@ -59,12 +59,15 @@ struct Icon
     int h;
     HDC image;
     bool draw;
-
     void paint()
     {
-        if(draw == true)
+        if(draw)
         {
             txTransparentBlt(txDC(),x,y,w,h,image,0,0,RGB(50,201,72));
+        }
+        else
+        {
+            txTransparentBlt(txDC(),x,y,w,h,image,200,0,RGB(50,201,72));
         }
     }
 };
@@ -82,9 +85,9 @@ struct dialog
 
     void draw()
     {
-        txBitBlt(txDC(),x,y,w,h,image);
         txSetColor(colorVne);
         txSetFillColor(colorVny);
+        txBitBlt(txDC(),x,y,w,h,image);
         txSelectFont ("Comic Sans MS", r);
         txDrawText(x+20,y+25,x+w-25,y+h-100,text);
     }
@@ -104,15 +107,20 @@ int main()
     HDC Lose=txLoadImage("котПлакПлак.bmp");
     HDC plate=txLoadImage("тарелочка.bmp");
     HDC cat2 = txLoadImage("cat/кошка.bmp");
+    HDC effect = txLoadImage("эффект.bmp");
 
-    int xL = -50; int yL = 0;
+    int xL = 0; int yL = 0;
     int nKad = 0;
     int nK = 0;
+    int n = 0;
+    int n2 = 0;
     bool popil = false;
+    bool pred = false;
+    int kadr =0;
     int r = 0.7;
 
-    Icon c1 = {590,450,200,200,txLoadImage("иконки/котИконка.bmp"),false};
-    Icon c2 = {590,450,200,200,txLoadImage("иконки/кошкаИконка.bmp"),true};
+    Icon c1 = {590,450,200,200,txLoadImage("иконки/котИконка.bmp"),true};
+    Icon c2 = {590,450,200,175,txLoadImage("иконки/кошкаИконка.bmp"),true};
 
     dialog DI = {1,1,720,469,txLoadImage("диалог.bmp"),"d",50,RGB(150, 108, 33),RGB(133, 98, 37)};
 
@@ -288,7 +296,7 @@ int main()
         {
         txBitBlt(txDC(),0,0,1920,1080,house);
         txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
-        DI.x = 550; DI.y = 475; DI.r = 50; DI.draw(); DI.text = "Привет котенок, что ты тут делаешь?";
+        DI.x = 550; DI.y = 475; DI.r = 50; DI.text = "Привет котенок, что ты тут делаешь?"; DI.draw();
         btnV1.draw();
         btnV2.draw();
         nKad=0;
@@ -296,7 +304,7 @@ int main()
                 btnV1.x < txMouseX() and txMouseX() < btnV1.w + btnV1.x and
                 btnV1.y < txMouseY() and txMouseY() < btnV1.y + btnV1.h)
             {
-                DI.draw(); DI.text = "Ой какой миленький котик, давай \n" "я тебе молочка налью";
+                DI.text = "Ой какой миленький котик, давай \n" "я тебе молочка налью";  DI.draw();
                 txSleep(2000);
                 page = "havat";
             }
@@ -304,7 +312,7 @@ int main()
                 btnV2.x < txMouseX() and txMouseX() < btnV2.w + btnV2.x and
                 btnV2.y < txMouseY() and txMouseY() < btnV2.y + btnV2.h)
             {
-            DI.draw();  DI.text = "С ЧЕГО ТЫ ШИПИШЬ НА МЕНЯ\n" "А ЕСЛИ У ТЕБЯ БЕШЕННОСТЬ, КЫШ ОТ СЮДА";
+            DI.text = "С ЧЕГО ТЫ ШИПИШЬ НА МЕНЯ\n" "А ЕСЛИ У ТЕБЯ БЕШЕННОСТЬ, КЫШ ОТ СЮДА"; DI.draw();
             nKad = 2;
             txSleep(4500);
             page = "lose";
@@ -337,7 +345,7 @@ int main()
                 {
                     txBitBlt(txDC(),0,0,1920,1080,house);
                     txTransparentBlt(txDC(),150,450, 350,350,granny, 350*nKad, 0,RGB(150,150,150));
-                    DI.draw(); DI.text = "Ну иди погуляй";
+                    DI.text = "Ну иди погуляй"; DI.draw();
                     txSleep(2500);
                     page = "street";
 
@@ -359,14 +367,32 @@ int main()
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
-            if (cat.x < 820)
+
+            if (cat.x < 820 and kadr == 0)
             {
-                DI.draw();  DI.text = "?"; DI.x = 800; DI.y = 475;
-                c1.paint(); c2.paint(); c1.draw = false; c2.draw = true;
-                txSleep(750);
-                DI.draw(); DI.text = "Ты должно быть здесь новенький, \n" "такой расскраски котов не было еще";
-                txSleep(1999);
-                DI.draw();
+                DI.text = "?"; DI.x = 800; DI.y = 475;  DI.draw();
+                c2.paint();
+                txSleep(1000);
+                DI.text = "Ты должно быть здесь новенький, \n" "такой расскраски котов не было еще"; DI.draw();
+                txSleep(3999);
+                kadr = 1;
+            }
+            if(kadr == 1)
+            {
+                txClear();
+                txBitBlt(txDC(),xL,yL,1920,1080,location);
+                txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 83.3*nKad, 0,RGB(150,150,100));
+                txTransparentBlt(txDC(),650,386,93,50,cat2,0,0,RGB(0,0,0));
+                c1.paint();
+                DI.text = "Ага, не успел осмотреться \n" "уже бабушка какая-то покормила"; DI.draw();
+                txSleep(3999);
+                kadr = 2;
+            }
+            if(kadr == 2)
+            {
+                c2.paint();
+                DI.text = "О, это наша кормилица, она всех котят кормит.\n" "Кстати, тебе нужно найти укрытие к вечеру, по ночам у нас опасно коты бездомные ходят. \n " " Иди сходи к бабуле, может к ней получится поселиться"; DI.draw();
+                pred = true;
             }
         }
 
