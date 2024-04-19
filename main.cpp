@@ -105,6 +105,28 @@ struct gran
         txTransparentBlt(txDC(),x,y, w,h,image, w*n, 0,RGB(150,150,150));
     }
 };
+struct hpBar
+{
+    int x;
+    int y;
+    HDC image;
+    int w;
+    int h;
+    int hp;
+    void draw()
+    {
+        char str[50];
+        sprintf(str,"%d",hp);
+        txTransparentBlt(txDC(),x,y, w,h,image, 0, 0,TX_WHITE);
+        txSetColor(RGB(201,16,16));
+        txSetFillColor(RGB(234,19,19));
+        txRectangle(x+92,y+17,x+92+hp*2.6,y+83);
+        txSetColor(RGB(26,2,7));
+        txSetFillColor(RGB(26,2,7));
+        txSelectFont ("Bahnschrift", 45);
+        txDrawText(x+25,y+27,x+83,y+66,str);
+    }
+};
 int main()
 {
     txCreateWindow (1920, 1080);
@@ -130,6 +152,8 @@ int main()
     int r = 0.7;
     bool kvest = false;
     bool fight = false;
+
+    hpBar helf = {55,900,txLoadImage("hpBar.bmp"),373,100,30};
 
     Icon c1 = {590,450,200,200,txLoadImage("иконки/кот»конка.bmp"),true};
     Icon c2 = {590,450,200,175,txLoadImage("иконки/кошка»конка.bmp"),true};
@@ -201,6 +225,7 @@ int main()
         if(page == "street")
         {
             txBitBlt(txDC(),xL,yL,1920,1080,location);
+            helf.draw();
             if(GetAsyncKeyState ('L') and GetAsyncKeyState ('O'))
             {
                 page = "сцена";
@@ -396,6 +421,7 @@ int main()
                     DI.text = "Ќу иди погул€й"; DI.draw();
                     txSleep(2500);
                     page = "street";
+                    helf.hp = 100;
 
                 }
 
@@ -473,6 +499,7 @@ txDeleteDC(kushat);
 txDeleteDC(cat2);
 txDeleteDC(c1.image);
 txDeleteDC(c2.image);
+txDeleteDC(helf.image);
 txDisableAutoPause();
 txTextCursor (false);
 return 0;
