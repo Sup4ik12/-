@@ -127,6 +127,56 @@ struct hpBar
         txDrawText(x+25,y+27,x+83,y+66,str);
     }
 };
+struct Prizrak
+{
+    int x;
+    int y;
+    int w;
+    int h;
+    HDC L;
+    HDC R;
+    HDC image;
+    int n;
+    int x1;
+    int y1;
+    void draw()
+    {
+        txTransparentBlt(txDC(),x,y, w,h,image, w*n, 0,RGB(34,177,76));
+        if(x1 > x and y1 > y)
+        {
+            image = R;
+            x += (x1-x)/5;
+            y += (y1-y)/5;
+            n += 1;
+            if (n>=4) n=0;
+        }
+        if(x1 > x and y1 < y)
+        {
+            image = R;
+            x -= (x1-x)/5;
+            y += (y-y1)/5;
+            n += 1;
+            if (n>=4) n=0;
+        }
+        if(x1 < x and y1 > y)
+        {
+            image = L;
+            x -= (x-x1)/5;
+            y += (y1-y)/5;
+            n += 1;
+            if (n>=4) n=0;
+        }
+        if(x1 < x and y1 < y)
+        {
+            image = L;
+            x -= (x-x1)/5;
+            y -= (y-y1)/5;
+            n += 1;
+            if (n>=4) n=0;
+        }
+
+    }
+};
 int main()
 {
     txCreateWindow (1920, 1080);
@@ -152,6 +202,7 @@ int main()
     int r = 0.7;
     bool kvest = false;
     bool fight = false;
+    bool vibor = false;
 
     hpBar helf = {55,900,txLoadImage("hpBar.bmp"),373,100,30};
 
@@ -161,6 +212,8 @@ int main()
     dialog DI = {1,1,720,469,txLoadImage("диалог.bmp"),"d",50,RGB(150, 108, 33),RGB(133, 98, 37)};
 
     gran G = {150,450,350,350,0,txLoadImage("бабуля.bmp")};
+
+    Prizrak ghost = {250,250,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y};
 
     button btnSt = {500,250,150,75,"СТАРТ",TX_WHITE,TX_RED,30};
     button btnHe = {750,500,150,75,"ПАМАГИТЕ",TX_WHITE,TX_RED,30};
@@ -226,9 +279,19 @@ int main()
         {
             txBitBlt(txDC(),xL,yL,1920,1080,location);
             helf.draw();
+            if(GetAsyncKeyState ('T'))
+            {
+                ghost.x = 1000;
+                ghost.y = 750;
+                fight = true;
+            }
+            if(GetAsyncKeyState ('F'))
+            {
+                fight = false;
+            }
             if(GetAsyncKeyState ('L') and GetAsyncKeyState ('O'))
             {
-                page = "сцена";
+                sten = true;
             }
             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 83.3*nKad, 0,RGB(150,150,100));
             if(GetAsyncKeyState ('W') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
@@ -316,6 +379,11 @@ int main()
             {
                 popil = false;
             }
+            if(fight == true)
+            {
+                ghost.draw();
+
+            }
         }
 
         if(page == "dom")
@@ -341,13 +409,13 @@ int main()
                         btnV2.x < txMouseX() and txMouseX() < btnV2.w + btnV2.x and
                         btnV2.y < txMouseY() and txMouseY() < btnV2.y + btnV2.h)
                     {
-                    DI.text = "С ЧЕГО ТЫ ШИПИШЬ НА МЕНЯ\n" "А ЕСЛИ У ТЕБЯ БЕШЕННОСТЬ, КЫШ ОТ СЮДА"; DI.draw();
-                    G.n = 1;
-                    txSleep(4500);
-                    page = "lose";
+                        DI.text = "С ЧЕГО ТЫ ШИПИШЬ НА МЕНЯ\n" "А ЕСЛИ У ТЕБЯ БЕШЕННОСТЬ, КЫШ ОТ СЮДА"; DI.draw();
+                        G.n = 1;
+                        txSleep(4500);
+                        page = "lose";
                     }
             }
-            if(sten == true and page == "dom" and kvest != true and fight != true)
+            if(sten == true and page == "dom" and kvest == false and fight == false)
             {
                 txBitBlt(txDC(),0,0,1920,1080,house);
                 G.n = 0; G.draw();
@@ -355,40 +423,48 @@ int main()
                 DI.text = "Чего вернулся, только поел жe";  DI.draw();
                 txSleep(1900);
                 DI.text = "."; DI.draw();
-                txSleep(650);
+                txSleep(750);
                 DI.text = ".."; DI.draw();
-                txSleep(650);
+                txSleep(750);
                 DI.text = "..."; DI.draw();
-                txSleep(650);
+                txSleep(750);
                 DI.text = "...."; DI.draw();
-                txSleep(650);
+                txSleep(750);
                 DI.text = "Aaaa, ты поселиться чтоли хочешь\n" "ко мне?"; DI.draw();
-                txSleep(500);
-                G.x = 10000; G.draw();
-                c1.x = 340; c1.draw = true; c1.paint();
-                btnV1.text = "кивнуть"; btnV2.text = "убежать"; btnV1.r = 50; btnV2.r = 50; btnV1.draw(); btnV2.draw();
-                if( txMouseButtons() == 1 and
-                    btnV1.x < txMouseX() and txMouseX() < btnV1.w + btnV1.x and
-                    btnV1.y < txMouseY() and txMouseY() < btnV1.y + btnV1.h)
+                vibor = true;
+                while (vibor == true)
                 {
-                    c1.draw = false;
-                    G.x = 150; G.draw();
-                    DI.text = "Ко мне просто так не заселиться \n" "тебе предстоит пройти испытания"; DI.draw();
-                    txSleep(3500);
-                    kvest = true;
+                    txBegin();
+                    txBitBlt(txDC(),0,0,1920,1080,house);d
+                    DI.draw();
+                    c1.x = 340; c1.draw = true; c1.paint();
+                    btnV1.text = "кивнуть"; btnV2.text = "убежать"; btnV1.r = 50; btnV2.r = 50; btnV1.draw(); btnV2.draw();
+                    if( txMouseButtons() == 1 and
+                        btnV1.x < txMouseX() and txMouseX() < btnV1.w + btnV1.x and
+                        btnV1.y < txMouseY() and txMouseY() < btnV1.y + btnV1.h)
+                    {
+                        c1.draw = false;
+                        G.x = 150; G.draw();
+                        DI.text = "Ко мне просто так не заселиться \n" "тебе предстоит пройти испытания"; DI.draw();
+                        txSleep(3500);
+                        kvest = true;
+                        vibor = false;
+                    }
+                    if( txMouseButtons() == 1 and
+                        btnV2.x < txMouseX() and txMouseX() < btnV2.w + btnV2.x and
+                        btnV2.y < txMouseY() and txMouseY() < btnV2.y + btnV2.h)
+                    {
+                        c1.draw = false;
+                        G.x = 150; G.draw();
+                        DI.text = "А, просто встретится. Ну ладно \n" "иди гуляй"; DI.draw();
+                        txSleep(2500);
+                        fight = true;
+                        vibor = false;
+                        page = "street";
+                    }
+                    txEnd();
+                    txSleep(10);
                 }
-                if( txMouseButtons() == 1 and
-                    btnV2.x < txMouseX() and txMouseX() < btnV2.w + btnV2.x and
-                    btnV2.y < txMouseY() and txMouseY() < btnV2.y + btnV2.h)
-                {
-                    c1.draw = false;
-                    G.x = 150; G.draw();
-                    DI.text = "А, просто встретится. Ну ладно \n" "иди гуляй"; DI.draw();
-                    txSleep(2500);
-                    fight = true;
-                }
-                txSleep(123456789);
-
             }
         }
 
@@ -500,6 +576,9 @@ txDeleteDC(cat2);
 txDeleteDC(c1.image);
 txDeleteDC(c2.image);
 txDeleteDC(helf.image);
+txDeleteDC(ghost.L);
+txDeleteDC(ghost.R);
+txDeleteDC(ghost.image);
 txDisableAutoPause();
 txTextCursor (false);
 return 0;
