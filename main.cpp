@@ -139,44 +139,58 @@ struct Prizrak
     int n;
     int x1;
     int y1;
+    int t;
+    int v;
     void draw()
     {
+        int vx = (abs(x1-x))/t;
+        int vy = (abs(y1-y))/t;
         txTransparentBlt(txDC(),x,y, w,h,image, w*n, 0,RGB(34,177,76));
         if(x1 > x and y1 > y)
         {
             image = R;
-            x += (x1-x)/5;
-            y += (y1-y)/5;
+            x += vx;
+            y += vy;
             n += 1;
             if (n>=4) n=0;
         }
         if(x1 > x and y1 < y)
         {
             image = R;
-            x -= (x1-x)/5;
-            y += (y-y1)/5;
+            x += vx;
+            y -= vy;
             n += 1;
             if (n>=4) n=0;
         }
         if(x1 < x and y1 > y)
         {
             image = L;
-            x -= (x-x1)/5;
-            y += (y1-y)/5;
+            x -= vx;
+            y += vy;
             n += 1;
             if (n>=4) n=0;
         }
         if(x1 < x and y1 < y)
         {
             image = L;
-            x -= (x-x1)/5;
-            y -= (y-y1)/5;
+            x -= vx;
+            y -= vy;
             n += 1;
             if (n>=4) n=0;
         }
+        if(abs(x1-x)<= 400)
+        {
+            vx = v;
+        }
+        if(abs(y1-y) <= 400)
+        {
+            vy = v;
+        }
+
 
     }
 };
+
 int main()
 {
     txCreateWindow (1920, 1080);
@@ -198,13 +212,20 @@ int main()
     int nK = 0;
     bool popil = false;
     bool sten = false;
-    int kadr =0;
+    int kadr = 0;
     int r = 0.7;
+    int time = 600;
     bool kvest = false;
     bool fight = false;
     bool vibor = false;
 
-    hpBar helf = {55,900,txLoadImage("hpBar.bmp"),373,100,30};
+    char str[50];
+
+
+    char a[50];
+    char b[50];
+
+    hpBar helf = {210,850,txLoadImage("hpBar.bmp"),373,100,30};
 
     Icon c1 = {590,450,200,200,txLoadImage("èêîíêè/êîòÈêîíêà.bmp"),true};
     Icon c2 = {590,450,200,175,txLoadImage("èêîíêè/êîøêàÈêîíêà.bmp"),true};
@@ -213,7 +234,9 @@ int main()
 
     gran G = {150,450,350,350,0,txLoadImage("áàáóëÿ.bmp")};
 
-    Prizrak ghost = {250,250,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y};
+    Prizrak ghost = {250,250,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,9,1};
+    Prizrak ghost1 = {1500,250,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,10,2};
+    Prizrak ghost2 = {750,800,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,6,2.5};
 
     button btnSt = {500,250,150,75,"ÑÒÀÐÒ",TX_WHITE,TX_RED,30};
     button btnHe = {750,500,150,75,"ÏÀÌÀÃÈÒÅ",TX_WHITE,TX_RED,30};
@@ -229,6 +252,11 @@ int main()
         txClear();
         txBegin();
         txSetFillColor (TX_WHITE);
+
+        if(helf.hp == 0)
+        {
+            page = "lose";
+        }
 
         if(GetAsyncKeyState ('P'))
             {
@@ -296,8 +324,14 @@ int main()
             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 83.3*nKad, 0,RGB(150,150,100));
             if(GetAsyncKeyState ('W') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
             {
-               cat.image=cat.U;
-               cat.y -= cat.v;
+                cat.image=cat.U;
+                cat.y -= cat.v;
+                ghost.x1 = cat.x;
+               ghost.y1 = cat.y;
+                ghost1.x1 = cat.x;
+               ghost1.y1 = cat.y;
+                ghost2.x1 = cat.x;
+               ghost2.y1 = cat.y;
                nKad += 1;
                 if (nKad>=3) nKad=0;
             }
@@ -305,6 +339,12 @@ int main()
             {
                 cat.image = cat.D;
                 cat.y += cat.v;
+                ghost.x1 = cat.x;
+               ghost.y1 = cat.y;
+                ghost1.x1 = cat.x;
+               ghost1.y1 = cat.y;
+                ghost2.x1 = cat.x;
+               ghost2.y1 = cat.y;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
@@ -312,6 +352,12 @@ int main()
             {
                 cat.image = cat.L;
                 cat.x -= cat.v;
+                ghost.x1 = cat.x;
+               ghost.y1 = cat.y;
+                ghost1.x1 = cat.x;
+               ghost1.y1 = cat.y;
+                ghost2.x1 = cat.x;
+               ghost2.y1 = cat.y;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
 
@@ -320,6 +366,12 @@ int main()
             {
                 cat.image = cat.R;
                 cat.x += cat.v;
+                ghost.x1 = cat.x;
+               ghost.y1 = cat.y;
+                ghost1.x1 = cat.x;
+               ghost1.y1 = cat.y;
+                ghost2.x1 = cat.x;
+               ghost2.y1 = cat.y;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
@@ -328,6 +380,12 @@ int main()
                 cat.image = cat.RD;
                 cat.x += cat.v;
                 cat.y += cat.v;
+                ghost.x1 = cat.x;
+               ghost.y1 = cat.y;
+                ghost1.x1 = cat.x;
+               ghost1.y1 = cat.y;
+                ghost2.x1 = cat.x;
+               ghost2.y1 = cat.y;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
@@ -336,6 +394,12 @@ int main()
                 cat.image = cat.RU ;
                 cat.x += cat.v;
                 cat.y -= cat.v;
+                ghost.x1 = cat.x;
+               ghost.y1 = cat.y;
+                ghost1.x1 = cat.x;
+               ghost1.y1 = cat.y;
+                ghost2.x1 = cat.x;
+               ghost2.y1 = cat.y;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
@@ -344,6 +408,12 @@ int main()
                 cat.image = cat.LD ;
                 cat.x -= cat.v;
                 cat.y += cat.v;
+                ghost.x1 = cat.x;
+               ghost.y1 = cat.y;
+                ghost1.x1 = cat.x;
+               ghost1.y1 = cat.y;
+                ghost2.x1 = cat.x;
+               ghost2.y1 = cat.y;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
@@ -352,6 +422,12 @@ int main()
                 cat.image = cat.LU ;
                 cat.x -= cat.v;
                 cat.y -= cat.v;
+                ghost.x1 = cat.x;
+               ghost.y1 = cat.y;
+                ghost1.x1 = cat.x;
+               ghost1.y1 = cat.y;
+                ghost2.x1 = cat.x;
+               ghost2.y1 = cat.y;
                 nKad += 1;
                 if (nKad>=3) nKad=0;
             }
@@ -379,11 +455,37 @@ int main()
             {
                 popil = false;
             }
-            if(fight == true)
+            if(fight == true and time !=0)
             {
                 ghost.draw();
+                ghost1.draw();
+                ghost2.draw();
+                txSetColor(TX_WHITE);
+                time -= 1;
+                sprintf(str,"0:%d",time);
+                txTextOut(340,240,str);
+
+                if((cat.x < ghost.x+20 and ghost.x-20 < cat.w + cat.x and
+                  cat.y < ghost.y-20 and ghost.y+20 < cat.y + cat.h) or
+                  (cat.x < ghost1.x+20 and ghost1.x-20 < cat.w + cat.x and
+                  cat.y < ghost1.y-20 and ghost1.y+20 < cat.y + cat.h) or
+                  (cat.x < ghost2.x+20 and ghost2.x-20 < cat.w + cat.x and
+                  cat.y < ghost2.y-20 and ghost2.y+20 < cat.y + cat.h))
+                {
+                    helf.hp -= 5;
+
+                }
+
 
             }
+
+            int x = txMouseX();
+            int y = txMouseY();
+            sprintf(a,"%d",x);
+            sprintf(b,"%d",y);
+            txTextOut(500,400,a);
+            txTextOut(500,420,b);
+
         }
 
         if(page == "dom")
@@ -412,7 +514,7 @@ int main()
                         DI.text = "Ñ ×ÅÃÎ ÒÛ ØÈÏÈØÜ ÍÀ ÌÅÍß\n" "À ÅÑËÈ Ó ÒÅÁß ÁÅØÅÍÍÎÑÒÜ, ÊÛØ ÎÒ ÑÞÄÀ"; DI.draw();
                         G.n = 1;
                         txSleep(4500);
-                        page = "lose";
+                        helf.hp = 0;
                     }
             }
             if(sten == true and page == "dom" and kvest == false and fight == false)
@@ -435,7 +537,7 @@ int main()
                 while (vibor == true)
                 {
                     txBegin();
-                    txBitBlt(txDC(),0,0,1920,1080,house);d
+                    txBitBlt(txDC(),0,0,1920,1080,house);
                     DI.draw();
                     c1.x = 340; c1.draw = true; c1.paint();
                     btnV1.text = "êèâíóòü"; btnV2.text = "óáåæàòü"; btnV1.r = 50; btnV2.r = 50; btnV1.draw(); btnV2.draw();

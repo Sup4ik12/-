@@ -1777,3 +1777,44 @@ Run file:	D:\Кирилл\мои программы\игра\Игрунька\bin\Debug\Игрунька.exe
 Directory:	D:\Кирилл\мои программы\игра\Игрунька
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe, файл: c:\codeblocks\codeblocks\mingw\include\txlib.h, строка: 10851, функция: bool {anonymous}::TX::_txBuffer_Delete(HDC__**),
+
+Сообщение: Параметр "*dc" неверен. Возможно, этот холст не создан, или уже уничтожен, или не загрузилась картинка.
+
+#1: TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400], Instance: 0x004F82FC (32-bit), Flags: CMdRe0, Thread: 0x235C (Main), GetLastError(): 13 (Недопустимые данные). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x0040A51B in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: _txBuffer_Delete() at c:/codeblocks/codeblocks/mingw/include/txlib.h (10851)
+# 1 0x0041618D in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txDeleteDC() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13597)
+# 2 0x004162D9 in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: txDeleteDC() at c:/codeblocks/codeblocks/mingw/include/txlib.h (13619)
+
+# 3 0x004201FB in D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe: main() at D:/Козлов Кирилл/игра/--main/--main/main.cpp (665):
+
+    663: txDeleteDC(cat.U);
+    664: txDeleteDC(cat.D);
+=>  665: txDeleteDC(cat.L);
+    666: txDeleteDC(cat.R);
+    667: txDeleteDC(cat.RU);
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 171, Date: 2022-07-23 02:08:28 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	c:\codeblocks\codeblocks\mingw\include\txlib.h
+Compiled:	Apr 22 2024 18:27:45, GNU g++ 4.8.1, std=201103L, MinGW Runtime 3.20, 32-bit, Debug
+Started:	Apr 22 2024 18:28:52
+
+Run file:	D:\Козлов Кирилл\игра\--main\--main\bin\Debug\Игрунька.exe
+Directory:	D:\Козлов Кирилл\игра\--main\--main
+
+--------------------------------------------------
