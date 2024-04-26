@@ -206,10 +206,13 @@ int main()
     HDC plate=txLoadImage("тарелочка.bmp");
     HDC cat2 = txLoadImage("cat/кошка.bmp");
     HDC effect = txLoadImage("эффект.bmp");
+    HDC sleep = txLoadImage("cat/sleep.bmp");
+    HDC end1 = txLoadImage("лока/конец1.bmp");
 
     int xL = 0; int yL = 0;
     int nKad = 0;
     int nK = 0;
+    int da = 0;
     bool popil = false;
     bool sten = false;
     int kadr = 0;
@@ -244,6 +247,8 @@ int main()
     button btnV1 = {850,700,200,75,"ћя”",RGB(227, 185, 109),RGB(133, 98, 37),100};
     button btnV2 = {600,700,200,75,"*«јЎ»ѕ≈“№*",RGB(227, 185, 109),RGB(133, 98, 37),38};
 
+
+
     cat.drawCat();
 
     while (page != "exit")
@@ -255,6 +260,7 @@ int main()
 
         if(helf.hp == 0)
         {
+            txSleep(2000);
             page = "lose";
         }
 
@@ -319,7 +325,7 @@ int main()
             }
             if(GetAsyncKeyState ('L') and GetAsyncKeyState ('O'))
             {
-                sten = true;
+                time = 1;
             }
             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 83.3*nKad, 0,RGB(150,150,100));
             if(GetAsyncKeyState ('W') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
@@ -462,21 +468,47 @@ int main()
                 ghost2.draw();
                 txSetColor(TX_WHITE);
                 time -= 1;
-                sprintf(str,"0:%d",time);
+                txSelectFont ("Comic Sans MS", 50);
+                sprintf(str,"0:%d",time/10);
                 txTextOut(340,240,str);
 
-                if((cat.x < ghost.x+20 and ghost.x-20 < cat.w + cat.x and
-                  cat.y < ghost.y-20 and ghost.y+20 < cat.y + cat.h) or
-                  (cat.x < ghost1.x+20 and ghost1.x-20 < cat.w + cat.x and
-                  cat.y < ghost1.y-20 and ghost1.y+20 < cat.y + cat.h) or
-                  (cat.x < ghost2.x+20 and ghost2.x-20 < cat.w + cat.x and
-                  cat.y < ghost2.y-20 and ghost2.y+20 < cat.y + cat.h))
+                if (((cat.x+30<ghost.x+ghost.w) &&
+                    (cat.x+cat.w-30>ghost.x) &&
+                    (cat.y+30<ghost.y+ghost.h) &&
+                    (cat.y+cat.h-30>ghost.y)) or
+                    ((cat.x+30<ghost1.x+ghost1.w) &&
+                    (cat.x+cat.w-30>ghost1.x) &&
+                    (cat.y+30<ghost1.y+ghost1.h) &&
+                    (cat.y+cat.h-30>ghost1.y)) or
+                    ((cat.x+30<ghost2.x+ghost2.w) &&
+                    (cat.x+cat.w-30>ghost2.x) &&
+                    (cat.y+30<ghost2.y+ghost2.h) &&
+                    (cat.y+cat.h-30>ghost2.y)))
                 {
-                    helf.hp -= 5;
-
+                    helf.hp -= 1;
                 }
+            }
+            if(fight == true and time == 0)
+            {
+                txBitBlt(txDC(),0,0,1920,1080,end1);
+                if (da==0) txTransparentBlt(txDC(),830,400, 883.33,600,sleep, 833.33*da, 0,RGB(150,150,100));
+                if (da==1) txTransparentBlt(txDC(),780,400, 883.33,600,sleep, 833.33*da, 0,RGB(150,150,100));
+                if (da==2) txTransparentBlt(txDC(),730,400, 883.33,600,sleep, 833.33*da, 0,RGB(150,150,100));
+                if(da>2)
+                {
+                    da -= 1;
+                }
+                if(da<=2)
+                {
+                    da += 1;
+                }
+                txSleep(400);
+            }
 
-
+            if(helf.hp == 0)
+            {
+                txSleep(2000);
+                page = "lose";
             }
 
             int x = txMouseX();

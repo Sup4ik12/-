@@ -140,6 +140,7 @@ struct Prizrak
     int x1;
     int y1;
     int t;
+    int v;
     void draw()
     {
         int vx = (abs(x1-x))/t;
@@ -177,13 +178,13 @@ struct Prizrak
             n += 1;
             if (n>=4) n=0;
         }
-        if(abs(x1-x)<= 300)
+        if(abs(x1-x)<= 400)
         {
-            vx = 4;
+            vx = v;
         }
-        if(abs(y1-y) <= 300)
+        if(abs(y1-y) <= 400)
         {
-            vy = 4;
+            vy = v;
         }
 
 
@@ -205,10 +206,13 @@ int main()
     HDC plate=txLoadImage("òàðåëî÷êà.bmp");
     HDC cat2 = txLoadImage("cat/êîøêà.bmp");
     HDC effect = txLoadImage("ýôôåêò.bmp");
+    HDC sleep = txLoadImage("cat/sleep.bmp");
+    HDC end1 = txLoadImage("ëîêà/êîíåö1.bmp");
 
     int xL = 0; int yL = 0;
     int nKad = 0;
     int nK = 0;
+    int da = 0;
     bool popil = false;
     bool sten = false;
     int kadr = 0;
@@ -233,9 +237,9 @@ int main()
 
     gran G = {150,450,350,350,0,txLoadImage("áàáóëÿ.bmp")};
 
-    Prizrak ghost = {250,250,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,9};
-    Prizrak ghost1 = {1500,250,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,10};
-    Prizrak ghost2 = {750,800,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,6};
+    Prizrak ghost = {250,250,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,9,1};
+    Prizrak ghost1 = {1500,250,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,10,2};
+    Prizrak ghost2 = {750,800,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,6,2.5};
 
     button btnSt = {500,250,150,75,"ÑÒÀÐÒ",TX_WHITE,TX_RED,30};
     button btnHe = {750,500,150,75,"ÏÀÌÀÃÈÒÅ",TX_WHITE,TX_RED,30};
@@ -243,12 +247,9 @@ int main()
     button btnV1 = {850,700,200,75,"ÌßÓ",RGB(227, 185, 109),RGB(133, 98, 37),100};
     button btnV2 = {600,700,200,75,"*ÇÀØÈÏÅÒÜ*",RGB(227, 185, 109),RGB(133, 98, 37),38};
 
-    cat.drawCat();
 
-    if(helf.hp <= 0)
-    {
-        page = "lose";      
-    }
+
+    cat.drawCat();
 
     while (page != "exit")
     {
@@ -256,6 +257,12 @@ int main()
         txClear();
         txBegin();
         txSetFillColor (TX_WHITE);
+
+        if(helf.hp == 0)
+        {
+            txSleep(2000);
+            page = "lose";
+        }
 
         if(GetAsyncKeyState ('P'))
             {
@@ -318,7 +325,7 @@ int main()
             }
             if(GetAsyncKeyState ('L') and GetAsyncKeyState ('O'))
             {
-                sten = true;
+                time = 1;
             }
             txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 83.3*nKad, 0,RGB(150,150,100));
             if(GetAsyncKeyState ('W') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
@@ -461,16 +468,40 @@ int main()
                 ghost2.draw();
                 txSetColor(TX_WHITE);
                 time -= 1;
-                sprintf(str,"0:%d",time);
+                txSelectFont ("Comic Sans MS", 50);
+                sprintf(str,"0:%d",time/10);
                 txTextOut(340,240,str);
 
-                if(cat.x < ghost.x and ghost.x < cat.w + cat.x and
-                  cat.y < ghost.y and ghost.y < cat.y + cat.h)
+                if (((cat.x+30<ghost.x+ghost.w) &&
+                    (cat.x+cat.w-30>ghost.x) &&
+                    (cat.y+30<ghost.y+ghost.h) &&
+                    (cat.y+cat.h-30>ghost.y)) or
+                    ((cat.x+30<ghost1.x+ghost1.w) &&
+                    (cat.x+cat.w-30>ghost1.x) &&
+                    (cat.y+30<ghost1.y+ghost1.h) &&
+                    (cat.y+cat.h-30>ghost1.y)) or
+                    ((cat.x+30<ghost2.x+ghost2.w) &&
+                    (cat.x+cat.w-30>ghost2.x) &&
+                    (cat.y+30<ghost2.y+ghost2.h) &&
+                    (cat.y+cat.h-30>ghost2.y)))
                 {
-                    helf.hp = 0;
+                    helf.hp -= 1;
                 }
+            }
+            if(fight == true and time == 0)
+            {
+                txBitBlt(txDC(),0,0,1920,1080,end1);
+                if (da==0) txTransparentBlt(txDC(),830,400, 883.33,600,sleep, 833.33*da, 0,RGB(150,150,100));
+                da += 1;
+                if(da==3) da = 0;
+                if (da==1) txTransparentBlt(txDC(),7,400, 883.33,600,sleep, 833.33*da, 0,RGB(150,150,100));
+                txSleep(400);
+            }
 
-
+            if(helf.hp == 0)
+            {
+                txSleep(2000);
+                page = "lose";
             }
 
             int x = txMouseX();
