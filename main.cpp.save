@@ -190,6 +190,36 @@ struct Prizrak
 
     }
 };
+struct Plants
+{
+    int x;
+    int y;
+    int w;
+    int h;
+    HDC image;
+    int x1;
+    int y1;
+    int w1;
+    int h1;
+    int mouse;
+    int n;
+            
+    void draw()
+    {
+        if((x1+30<x+w) and
+            (x1+w1-30>x) and
+            (y1+30<y+h) and
+            (y1+h1-30>y) and
+            (mouse == 1))
+        {
+            txTransparentBlt(txDC(),x-10000,y, w,h,image, 0, 0,RGB(0,0,255));
+        }
+        else
+        {
+            txTransparentBlt(txDC(),x-10000,y, w,h,image, 0, 0,RGB(0,0,255));
+        } 
+    {
+};
 
 int main()
 {
@@ -197,17 +227,39 @@ int main()
     txSetColor (TX_WHITE, 5);
 
     string page = "menu";
-
+    
+    //локации
     HDC location=txLoadImage("лока/лока.bmp");
     HDC house=txLoadImage("лока/дом.bmp");
     HDC kushat=txLoadImage("лока/кушац.bmp");
-    cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,83.3,83.3,800,425,15,cat.v/1.5,cat.v,cat.v/1.5};
-    HDC Lose=txLoadImage("котѕлакѕлак.bmp");
-    HDC plate=txLoadImage("тарелочка.bmp");
-    HDC cat2 = txLoadImage("cat/кошка.bmp");
-    HDC effect = txLoadImage("эффект.bmp");
-    HDC sleep = txLoadImage("cat/sleep.bmp");
+    HDC kv1=txLoadImage("лока/квест1.bmp");
     HDC end1 = txLoadImage("лока/конец1.bmp");
+    
+    //персонажи
+    cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,83.3,83.3,800,425,15,cat.v/1.5,cat.v,cat.v/1.5};
+    HDC cat2 = txLoadImage("cat/кошка.bmp");
+    HDC sleep = txLoadImage("cat/sleep.bmp");
+    gran G = {150,450,350,350,0,txLoadImage("бабул€.bmp")};
+    Prizrak ghost = {250,250,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,9,1};
+    Prizrak ghost1 = {1500,250,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,10,2};
+    Prizrak ghost2 = {750,800,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,6,2.5};
+    
+    //концовки
+    HDC Lose=txLoadImage("концовки/котѕлакѕлак.bmp");
+    HDC Victory=txLoadImage("концовки/кот”ра”ра.bmp");
+    HDC Alone=txLoadImage("концовки/кот’нык’нык.bmp");
+    
+    //прочее
+    HDC plate=txLoadImage("тарелочка.bmp
+    Icon c1 = {590,450,200,200,txLoadImage("иконки/кот»конка.bmp"),true};
+    Icon c2 = {590,450,200,175,txLoadImage("иконки/кошка»конка.bmp"),true};
+    dialog DI = {1,1,720,469,txLoadImage("диалог.bmp"),"d",50,RGB(150, 108, 33),RGB(133, 98, 37)};
+    hpBar helf = {210,850,txLoadImage("hpBar.bmp"),373,100,30};
+    button btnSt = {500,250,150,75,"—“ј–“",TX_WHITE,TX_RED,30};
+    button btnHe = {750,500,150,75,"ѕјћј√»“≈",TX_WHITE,TX_RED,30};
+    button btnEx = {1000,750,150,75,"”…“»",TX_WHITE,TX_RED,30};
+    button btnV1 = {850,700,200,75,"ћя”",RGB(227, 185, 109),RGB(133, 98, 37),100};
+    button btnV2 = {600,700,200,75,"*«јЎ»ѕ≈“№*",RGB(227, 185, 109),RGB(133, 98, 37),38};
 
     int xL = 0; int yL = 0;
     int nKad = 0;
@@ -216,7 +268,6 @@ int main()
     bool popil = false;
     bool sten = false;
     int kadr = 0;
-    int r = 0.7;
     int time = 600;
     bool kvest = false;
     bool fight = false;
@@ -227,28 +278,6 @@ int main()
 
     char a[50];
     char b[50];
-
-    hpBar helf = {210,850,txLoadImage("hpBar.bmp"),373,100,30};
-
-    Icon c1 = {590,450,200,200,txLoadImage("иконки/кот»конка.bmp"),true};
-    Icon c2 = {590,450,200,175,txLoadImage("иконки/кошка»конка.bmp"),true};
-
-    dialog DI = {1,1,720,469,txLoadImage("диалог.bmp"),"d",50,RGB(150, 108, 33),RGB(133, 98, 37)};
-
-    gran G = {150,450,350,350,0,txLoadImage("бабул€.bmp")};
-
-    Prizrak ghost = {250,250,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,9,1};
-    Prizrak ghost1 = {1500,250,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,10,2};
-    Prizrak ghost2 = {750,800,107.75,120,txLoadImage("ghost/ghostL.bmp"),txLoadImage("ghost/ghostR.bmp"),ghost.R,0,cat.x,cat.y,6,2.5};
-
-    button btnSt = {500,250,150,75,"—“ј–“",TX_WHITE,TX_RED,30};
-    button btnHe = {750,500,150,75,"ѕјћј√»“≈",TX_WHITE,TX_RED,30};
-    button btnEx = {1000,750,150,75,"”…“»",TX_WHITE,TX_RED,30};
-    button btnV1 = {850,700,200,75,"ћя”",RGB(227, 185, 109),RGB(133, 98, 37),100};
-    button btnV2 = {600,700,200,75,"*«јЎ»ѕ≈“№*",RGB(227, 185, 109),RGB(133, 98, 37),38};
-
-
-
     cat.drawCat();
 
     while (page != "exit")
@@ -488,20 +517,22 @@ int main()
                     helf.hp -= 1;
                 }
             }
-            if(fight == true and time == 0)
+            if(fight == true and time <= 0)
             {
                 txBitBlt(txDC(),0,0,1920,1080,end1);
-                if (da==0) txTransparentBlt(txDC(),830,400, 883.33,600,sleep, 833.33*da, 0,RGB(150,150,100));
+                txTransparentBlt(txDC(),830,400, 886,600,sleep, 886*da, 0,RGB(150,150,100));
+                time -= 1;
                 da += 1;
-                if(da==3) da = 0;
-                if (da==1) txTransparentBlt(txDC(),7,400, 883.33,600,sleep, 833.33*da, 0,RGB(150,150,100));
-                txSleep(400);
-            }
+                txSleep(150);
+                if(da>3)
+                {
+                    da = 0;
+                }
+                if(time <= -50)
+                {
+                    page = "alone";
+                }
 
-            if(helf.hp == 0)
-            {
-                txSleep(2000);
-                page = "lose";
             }
 
             int x = txMouseX();
@@ -574,8 +605,18 @@ int main()
                         G.x = 150; G.draw();
                         DI.text = " о мне просто так не заселитьс€ \n" "тебе предстоит пройти испытани€"; DI.draw();
                         txSleep(3500);
+                        DI.text = "Ќу, приступим"; DI.draw();
+                        txSleep(2500);
+                        DI.text = "первым испытанием будет"; DI.draw();
+                        txSleep(2500);
+                        DI.text = "—Ѕќ– ”–ќ∆јя"; DI.draw();
+                        txSleep(1500);
+                        DI.text = "ѕойдем за мной"; DI.draw();
+                        txSleep(2500);
                         kvest = true;
                         vibor = false;
+                        page = "kvest1";
+                        
                     }
                     if( txMouseButtons() == 1 and
                         btnV2.x < txMouseX() and txMouseX() < btnV2.w + btnV2.x and
@@ -598,14 +639,36 @@ int main()
 
         if(page == "lose")
         {
-        txSetFillColor(TX_BLACK);
-        txClear();
-        txTransparentBlt(txDC(),200,200, 800,800,Lose, 0, 0,RGB(0,0,255));
-        txSelectFont ("Comic Sans MS", 150);
-        txSetColor(TX_WHITE,4);
-        txTextOut(980,310,"“ы проиграл)");
-        txSleep(4000);
-        page = "exit";
+            txSetFillColor(TX_BLACK);
+            txClear();
+            txTransparentBlt(txDC(),200,200, 800,800,Lose, 0, 0,RGB(0,0,255));
+            txSelectFont ("Comic Sans MS", 150);
+            txSetColor(TX_WHITE,4);
+            txTextOut(980,310,"“ы проиграл!(");
+            txSleep(4000);
+            page = "exit";
+        }
+        if(page == "victory")
+        {
+            txSetFillColor(TX_BLACK);
+            txClear();
+            txTransparentBlt(txDC(),200,200, 800,800,Victory, 0, 0,RGB(0,255,0));
+            txSelectFont ("Comic Sans MS", 150);
+            txSetColor(TX_WHITE,4);
+            txTextOut(980,310,"“ы выиграл!)");
+            txSleep(4000);
+            page = "exit";
+        }
+        if(page == "alone")
+        {
+            txSetFillColor(TX_BLACK);
+            txClear();
+            txTransparentBlt(txDC(),200,200, 800,800,Alone, 0, 0,RGB(255,0,0));
+            txSelectFont ("Comic Sans MS", 40);
+            txSetColor(TX_WHITE,4);
+            txDrawText(980,310,1500,800,"“ы по прежнему выиграл\n" "к тебе перестали приставать\n" "призраки, но ты осталс€ один, совсем один..." );
+            txSleep(10000);
+            page = "exit";
         }
 
         if(page == "havat")
@@ -677,6 +740,11 @@ int main()
                 page = "street";
             }
         }
+        if(page == "kvest1")
+        {
+        txBitBlt(txDC(),0,0,1920,1080,kv1);
+            
+        }
 
 
 
@@ -706,6 +774,8 @@ txDeleteDC(helf.image);
 txDeleteDC(ghost.L);
 txDeleteDC(ghost.R);
 txDeleteDC(ghost.image);
+txDeleteDC(Victory);
+txDeleteDC(Alone);
 txDisableAutoPause();
 txTextCursor (false);
 return 0;
