@@ -147,15 +147,19 @@ struct dialog
     const char* text;
     int r;
     COLORREF colorVny;
-    COLORREF colorVne;
+    COLORREF colorVne; \
+    bool v;
 
     void draw()
     {
-        txSetColor(colorVne);
-        txSetFillColor(colorVny);
-        txBitBlt(txDC(),x,y,w,h,image);
-        txSelectFont ("Comic Sans MS", r);
-        txDrawText(x+20,y+25,x+w-25,y+h-100,text);
+        if(v == true)
+        {
+            txSetColor(colorVne);
+            txSetFillColor(colorVny);
+            txBitBlt(txDC(),x,y,w,h,image);
+            txSelectFont ("Comic Sans MS", r);
+            txDrawText(x+20,y+25,x+w-25,y+h-100,text);
+        }
     }
 };
 struct gran
@@ -166,9 +170,13 @@ struct gran
     int h;
     int n;
     HDC image;
+    bool v;
     void draw()
     {
-        txTransparentBlt(txDC(),x,y, w,h,image, w*n, 0,RGB(150,150,150));
+        if(v = true)
+        {
+            txTransparentBlt(txDC(),x,y, w,h,image, w*n, 0,RGB(150,150,150));
+        }
     }
 };
 struct hpBar
@@ -207,7 +215,7 @@ struct Prizrak
     int y1;
     int t;
     int v;
-    void draw()
+    void draw(int x1, int y1)
     {
         int vx = (abs(x1-x))/t;
         int vy = (abs(y1-y))/t;
@@ -268,17 +276,19 @@ struct plant
     int w1;
     int h1;
     int n;
+    bool v;
 
-    void draw()
+    void draw(int x1,int y1)
     {
-        if((x1+30<x+w) and
+        if(((x1+30<x+w) and
             (x1+w1-30>x) and
             (y1+30<y+h) and
             (y1+h1-30>y) and
-            (txMouseButtons() == 1))
+            (txMouseButtons() == 1)) or n >= 1 or v == false)
         {
             txTransparentBlt(txDC(),x-10000,y, w,h,image, 0, 0,RGB(0,0,255));
             n += 1;
+            v = false;
         }
         else
         {
@@ -286,7 +296,6 @@ struct plant
         }
     }
 };
-
 int main()
 {
     txCreateWindow (1920, 1080);
@@ -328,8 +337,41 @@ int main()
     button btnV2 = {600,700,200,75,"*ЗАШИПЕТЬ*",RGB(227, 185, 109),RGB(133, 98, 37),38};
 
     //растения
-    plant astr = {100,100,184,349,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0};
+    plant astr1 = {407,66,130,246,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant astr2 = {1040,670-246,130,246,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant astr3 = {1401,300-246,130,246,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant astr4 = {1690,854-246,130,246,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant astr5 = {1258,847-246,130,246,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant astr6 = {530,852-246,130,246,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant astr7 = {140,672-246,130,246,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant astr8 = {795,314-246,130,246,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
 
+    plant aloe1 = {601,305-147,130,147,txLoadImage("цветки/алоэ.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant aloe2 = {324,662-147,130,147,txLoadImage("цветки/алоэ.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant aloe3 = {1619,487-147,130,147,txLoadImage("цветки/алоэ.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant aloe4 = {1203,300-147,130,147,txLoadImage("цветки/алоэ.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant aloe5 = {191,482-147,130,147,txLoadImage("цветки/алоэ.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant aloe6 = {765,669-147,130,147,txLoadImage("цветки/алоэ.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant aloe7 = {1040,862-147,130,147,txLoadImage("цветки/алоэ.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant aloe8 = {1455,661-147,130,147,txLoadImage("цветки/алоэ.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+
+    plant cact1 = {200,306-177,130,177,txLoadImage("цветки/кактус.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant cact2 = {310,840-177,130,177,txLoadImage("цветки/кактус.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant cact3 = {780,488-177,130,177,txLoadImage("цветки/кактус.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant cact4 = {553,650-177,130,177,txLoadImage("цветки/кактус.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant cact5 = {1014,301-177,130,177,txLoadImage("цветки/кактус.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant cact6 = {1240,650-177,130,177,txLoadImage("цветки/кактус.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant cact7 = {1426,480-177,130,177,txLoadImage("цветки/кактус.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant cact8 = {1597,306-177,130,177,txLoadImage("цветки/кактус.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+
+    plant sun1 = {110,854-254,130,254,txLoadImage("цветки/Подсолнух.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant sun2 = {384,485-254,130,254,txLoadImage("цветки/Подсолнух.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant sun3 = {583,482-254,130,254,txLoadImage("цветки/Подсолнух.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant sun4 = {750,850-254,130,254,txLoadImage("цветки/Подсолнух.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant sun5 = {1030,500-254,130,254,txLoadImage("цветки/Подсолнух.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant sun6 = {1233,500-254,130,254,txLoadImage("цветки/Подсолнух.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant sun7 = {1488,850-254,130,254,txLoadImage("цветки/Подсолнух.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant sun8 = {1672,672-254,130,254,txLoadImage("цветки/Подсолнух.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
 
     int xL = 0; int yL = 0;
     int nKad = 0;
@@ -342,6 +384,14 @@ int main()
     bool kvest = false;
     bool fight = false;
     bool vibor = false;
+    bool task1 = true;
+    bool task2 = false;
+    bool task3 = false;
+
+    int nA = 0;
+    int nAl = 0;
+    int nC = 0;
+    int nP = 0;
 
     char str[50];
 
@@ -452,9 +502,9 @@ int main()
             }
             if(fight == true and time !=0)
             {
-                ghost.draw();
-                ghost1.draw();
-                ghost2.draw();
+                ghost.draw(cat.x, cat.y);
+                ghost1.draw(cat.x, cat.y);
+                ghost2.draw(cat.x, cat.y);
                 txSetColor(TX_WHITE);
                 time -= 1;
                 txSelectFont ("Comic Sans MS", 50);
@@ -703,8 +753,83 @@ int main()
         if(page == "kvest1")
         {
         txBitBlt(txDC(),0,0,1920,1080,kv1);
+        astr1.draw(cat.x,cat.y);
+        astr2.draw(cat.x,cat.y);
+        astr3.draw(cat.x,cat.y);
+        astr4.draw(cat.x,cat.y);
+        astr5.draw(cat.x,cat.y);
+        astr6.draw(cat.x,cat.y);
+        astr7.draw(cat.x,cat.y);
+        astr8.draw(cat.x,cat.y);
+        aloe1.draw(cat.x,cat.y);
+        aloe2.draw(cat.x,cat.y);
+        aloe3.draw(cat.x,cat.y);
+        aloe4.draw(cat.x,cat.y);
+        aloe5.draw(cat.x,cat.y);
+        aloe6.draw(cat.x,cat.y);
+        aloe7.draw(cat.x,cat.y);
+        aloe8.draw(cat.x,cat.y);
+        cact1.draw(cat.x,cat.y);
+        cact2.draw(cat.x,cat.y);
+        cact3.draw(cat.x,cat.y);
+        cact4.draw(cat.x,cat.y);
+        cact5.draw(cat.x,cat.y);
+        cact6.draw(cat.x,cat.y);
+        cact7.draw(cat.x,cat.y);
+        cact8.draw(cat.x,cat.y);
+        sun1.draw(cat.x,cat.y);
+        sun2.draw(cat.x,cat.y);
+        sun3.draw(cat.x,cat.y);
+        sun4.draw(cat.x,cat.y);
+        sun5.draw(cat.x,cat.y);
+        sun6.draw(cat.x,cat.y);
+        sun7.draw(cat.x,cat.y);
+        sun8.draw(cat.x,cat.y);
+
         cat.drawCat();
-        astr.draw();
+
+        if(astr1.n>=1 or astr2.n>=1 or astr3.n>=1 or astr4.n>=1 or astr5.n>=1 or astr6.n>=1 or astr7.n>=1 or astr8.n>=1)
+        {
+            nA += 1;
+            astr1.n = 0; astr2.n = 0; astr3.n = 0; astr4.n = 0; astr5.n = 0; astr6.n = 0; astr7.n = 0; astr8.n = 0;
+        }
+        if(aloe1.n>=1 or aloe2.n>=1 or aloe3.n>=1 or aloe4.n>=1 or aloe5.n>=1 or aloe6.n>=1 or aloe7.n>=1 or aloe8.n>=1)
+        {
+            nAl += 1;
+            aloe1.n = 0;aloe2.n = 0;aloe3.n = 0;aloe4.n = 0;aloe5.n = 0;aloe6.n = 0;aloe7.n = 0;aloe8.n = 0;
+        }
+        if(cact1.n >= 1 or cact2.n >= 1 or cact3.n >= 1 or cact4.n >= 1 or cact5.n >= 1 or cact6.n >= 1 or cact7.n >= 1 or cact8.n >= 1)
+        {
+            nC += 1;
+            cact1.n = 0;cact2.n = 0;cact3.n = 0;cact4.n = 0;cact5.n = 0;cact6.n = 0;cact7.n = 0;cact8.n = 0;
+        }
+        if(sun1.n >= 1 or sun2.n >= 1 or sun3.n >= 1 or sun4.n >= 1 or sun5.n >= 1 or sun6.n >= 1 or sun7.n >= 1 or sun8.n >= 1)
+        {
+            nP += 1;
+            sun1.n = 0;sun2.n = 0;sun3.n = 0;sun4.n = 0;sun5.n = 0;sun6.n = 0;sun7.n = 0;sun8.n = 0;
+        }
+        if(task1 == true and time != 0)
+        {
+            G.draw();
+            DI.text = "Пришло время первого испытания!"; DI.draw();
+            txSleep(2500);
+            DI.text = "Ну что, приступим!"; DI.draw();
+            txSleep(2000);
+            DI.text = "Принеси мне 3 астры, 1 подсолнух, 2 алое, 1 кактус"; DI.draw();
+            txSleep(4000);
+            DI.v = false; G.v = false;
+            time -= 1;
+            txSelectFont ("Comic Sans MS", 50);
+            sprintf(str,"0:%d",time/10);
+            txTextOut(340,240,str);
+            if(nA == 3 and nP == 1 and nAl == 2 and nC == 1)
+            {
+                task1 = false;
+            }
+            else
+            {
+
+        }
 
 
         int x = txMouseX();
@@ -749,3 +874,4 @@ txDisableAutoPause();
 txTextCursor (false);
 return 0;
 }
+
