@@ -17,18 +17,84 @@ struct cat
     int y;
     int v;
     int v1;
-    int vL;
-    int vL1;
+    int nKad;
     void drawCat()
     {
-    if (image == R|| image == L )
+        txTransparentBlt(txDC(),x,y,w,h,image,w*nKad,0,RGB(150,150,100));
+        if (image == R|| image == L )
         {
-            txTransparentBlt (txDC(), x, y, w, h, image, 0, 0, TX_WHITE);
+            txTransparentBlt (txDC(), x, y, w, h, image, w*nKad, 0, RGB(150,150,100));
         }
-    else if (image == U || image == D )
+        else if (image == U || image == D )
         {
-            txTransparentBlt (txDC(), x, y, h, w, image, 0, 0, TX_WHITE);
+            txTransparentBlt (txDC(), x, y, h, w, image, w*nKad, 0, RGB(150,150,100));
         }
+        if(GetAsyncKeyState ('W') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
+        {
+                image=U;
+                y -= v;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+        }
+        if(GetAsyncKeyState ('S') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
+        {
+                image = D;
+                y += v;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+        }
+        if(GetAsyncKeyState ('A') and !GetAsyncKeyState ('S') and !GetAsyncKeyState ('W'))
+        {
+                image = L;
+                x -= v;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+
+        }
+        if(GetAsyncKeyState ('D') and !GetAsyncKeyState ('S') and !GetAsyncKeyState ('W'))
+        {
+                image = R;
+                x += v;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+        }
+        if(GetAsyncKeyState ('D') and GetAsyncKeyState ('S'))
+        {
+                image = RD;
+                x += v;
+                y += v;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+        }
+        if(GetAsyncKeyState ('D') and GetAsyncKeyState ('W'))
+        {
+                image = RU ;
+                x += v;
+                y -= v;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+        }
+        if(GetAsyncKeyState ('A') and GetAsyncKeyState ('S'))
+        {
+                image = LD ;
+                x -= v;
+                y += v;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+        }
+        if(GetAsyncKeyState ('A') and GetAsyncKeyState ('W'))
+        {
+                image = LU ;
+                x -= v;
+                y -= v;
+                nKad += 1;
+                if (nKad>=3) nKad=0;
+        }
+        if(!GetAsyncKeyState ('S') and !GetAsyncKeyState ('A') and !GetAsyncKeyState ('W') and !GetAsyncKeyState ('D'))
+        {
+                nKad = 0;
+        }
+
     }
 };
 struct button
@@ -201,7 +267,6 @@ struct plant
     int y1;
     int w1;
     int h1;
-    int mouse;
     int n;
 
     void draw()
@@ -210,9 +275,10 @@ struct plant
             (x1+w1-30>x) and
             (y1+30<y+h) and
             (y1+h1-30>y) and
-            (mouse == 1))
+            (txMouseButtons() == 1))
         {
             txTransparentBlt(txDC(),x-10000,y, w,h,image, 0, 0,RGB(0,0,255));
+            n += 1;
         }
         else
         {
@@ -236,7 +302,7 @@ int main()
     HDC end1 = txLoadImage("лока/конец1.bmp");
 
     //персонажи
-    cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,83.3,83.3,800,425,15,cat.v/1.5,cat.v,cat.v/1.5};
+    cat cat = {txLoadImage("cat/catR.bmp"),txLoadImage("cat/catL.bmp"),txLoadImage("cat/catU.bmp"),txLoadImage("cat/catD.bmp"),txLoadImage("cat/catRD.bmp"),txLoadImage("cat/catLD.bmp"),txLoadImage("cat/catRU.bmp"),txLoadImage("cat/catLU.bmp"),cat.R,83.3,83.3,800,425,15,cat.v/1.5,0};
     HDC cat2 = txLoadImage("cat/кошка.bmp");
     HDC sleep = txLoadImage("cat/sleep.bmp");
     gran G = {150,450,350,350,0,txLoadImage("бабул€.bmp")};
@@ -250,7 +316,7 @@ int main()
     HDC Alone=txLoadImage("концовки/кот’нык’нык.bmp");
 
     //прочее
-    HDC plate=txLoadImage("тарелочка.bmp
+    HDC plate=txLoadImage("тарелочка.bmp");
     Icon c1 = {590,450,200,200,txLoadImage("иконки/кот»конка.bmp"),true};
     Icon c2 = {590,450,200,175,txLoadImage("иконки/кошка»конка.bmp"),true};
     dialog DI = {1,1,720,469,txLoadImage("диалог.bmp"),"d",50,RGB(150, 108, 33),RGB(133, 98, 37)};
@@ -262,6 +328,7 @@ int main()
     button btnV2 = {600,700,200,75,"*«јЎ»ѕ≈“№*",RGB(227, 185, 109),RGB(133, 98, 37),38};
 
     //растени€
+    plant astr = {100,100,184,349,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0};
 
 
     int xL = 0; int yL = 0;
@@ -281,7 +348,6 @@ int main()
 
     char a[50];
     char b[50];
-    cat.drawCat();
 
     while (page != "exit")
     {
@@ -343,8 +409,6 @@ int main()
         //игра
         if(page == "street")
         {
-            txBitBlt(txDC(),xL,yL,1920,1080,location);
-            helf.draw();
             if(GetAsyncKeyState ('T'))
             {
                 ghost.x = 1000;
@@ -355,124 +419,17 @@ int main()
             {
                 fight = false;
             }
+            if(GetAsyncKeyState ('J'))
+            {
+                page = "kvest1";
+            }
             if(GetAsyncKeyState ('L') and GetAsyncKeyState ('O'))
             {
                 time = 1;
             }
-            txTransparentBlt(txDC(),cat.x,cat.y, cat.w,cat.h,cat.image, 83.3*nKad, 0,RGB(150,150,100));
-            if(GetAsyncKeyState ('W') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
-            {
-                cat.image=cat.U;
-                cat.y -= cat.v;
-                ghost.x1 = cat.x;
-               ghost.y1 = cat.y;
-                ghost1.x1 = cat.x;
-               ghost1.y1 = cat.y;
-                ghost2.x1 = cat.x;
-               ghost2.y1 = cat.y;
-               nKad += 1;
-                if (nKad>=3) nKad=0;
-            }
-            if(GetAsyncKeyState ('S') and !GetAsyncKeyState ('D') and !GetAsyncKeyState ('A'))
-            {
-                cat.image = cat.D;
-                cat.y += cat.v;
-                ghost.x1 = cat.x;
-               ghost.y1 = cat.y;
-                ghost1.x1 = cat.x;
-               ghost1.y1 = cat.y;
-                ghost2.x1 = cat.x;
-               ghost2.y1 = cat.y;
-                nKad += 1;
-                if (nKad>=3) nKad=0;
-            }
-            if(GetAsyncKeyState ('A') and !GetAsyncKeyState ('S') and !GetAsyncKeyState ('W'))
-            {
-                cat.image = cat.L;
-                cat.x -= cat.v;
-                ghost.x1 = cat.x;
-               ghost.y1 = cat.y;
-                ghost1.x1 = cat.x;
-               ghost1.y1 = cat.y;
-                ghost2.x1 = cat.x;
-               ghost2.y1 = cat.y;
-                nKad += 1;
-                if (nKad>=3) nKad=0;
-
-            }
-            if(GetAsyncKeyState ('D') and !GetAsyncKeyState ('S') and !GetAsyncKeyState ('W'))
-            {
-                cat.image = cat.R;
-                cat.x += cat.v;
-                ghost.x1 = cat.x;
-               ghost.y1 = cat.y;
-                ghost1.x1 = cat.x;
-               ghost1.y1 = cat.y;
-                ghost2.x1 = cat.x;
-               ghost2.y1 = cat.y;
-                nKad += 1;
-                if (nKad>=3) nKad=0;
-            }
-            if(GetAsyncKeyState ('D') and GetAsyncKeyState ('S'))
-            {
-                cat.image = cat.RD;
-                cat.x += cat.v;
-                cat.y += cat.v;
-                ghost.x1 = cat.x;
-               ghost.y1 = cat.y;
-                ghost1.x1 = cat.x;
-               ghost1.y1 = cat.y;
-                ghost2.x1 = cat.x;
-               ghost2.y1 = cat.y;
-                nKad += 1;
-                if (nKad>=3) nKad=0;
-            }
-            if(GetAsyncKeyState ('D') and GetAsyncKeyState ('W'))
-            {
-                cat.image = cat.RU ;
-                cat.x += cat.v;
-                cat.y -= cat.v;
-                ghost.x1 = cat.x;
-               ghost.y1 = cat.y;
-                ghost1.x1 = cat.x;
-               ghost1.y1 = cat.y;
-                ghost2.x1 = cat.x;
-               ghost2.y1 = cat.y;
-                nKad += 1;
-                if (nKad>=3) nKad=0;
-            }
-            if(GetAsyncKeyState ('A') and GetAsyncKeyState ('S'))
-            {
-                cat.image = cat.LD ;
-                cat.x -= cat.v;
-                cat.y += cat.v;
-                ghost.x1 = cat.x;
-               ghost.y1 = cat.y;
-                ghost1.x1 = cat.x;
-               ghost1.y1 = cat.y;
-                ghost2.x1 = cat.x;
-               ghost2.y1 = cat.y;
-                nKad += 1;
-                if (nKad>=3) nKad=0;
-            }
-            if(GetAsyncKeyState ('A') and GetAsyncKeyState ('W'))
-            {
-                cat.image = cat.LU ;
-                cat.x -= cat.v;
-                cat.y -= cat.v;
-                ghost.x1 = cat.x;
-               ghost.y1 = cat.y;
-                ghost1.x1 = cat.x;
-               ghost1.y1 = cat.y;
-                ghost2.x1 = cat.x;
-               ghost2.y1 = cat.y;
-                nKad += 1;
-                if (nKad>=3) nKad=0;
-            }
-            if(!GetAsyncKeyState ('S') and !GetAsyncKeyState ('A') and !GetAsyncKeyState ('W') and !GetAsyncKeyState ('D'))
-                {
-                    nKad = 0;
-                }
+            txBitBlt(txDC(),xL,yL,1920,1080,location);
+            cat.drawCat();
+            helf.draw();
             if (txMouseButtons() == 2 and
                 1725 <= txMouseX() and txMouseX() <= 1805 and
                 320 <= txMouseY() and txMouseY() <= 400 and
@@ -746,7 +703,16 @@ int main()
         if(page == "kvest1")
         {
         txBitBlt(txDC(),0,0,1920,1080,kv1);
+        cat.drawCat();
+        astr.draw();
 
+
+        int x = txMouseX();
+        int y = txMouseY();
+        sprintf(a,"%d",x);
+        sprintf(b,"%d",y);
+        txTextOut(500,400,a);
+        txTextOut(500,420,b);
         }
 
 
