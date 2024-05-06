@@ -284,13 +284,13 @@ struct plant
             (x1+w1-30>x) and
             (y1+30<y+h) and
             (y1+h1-30>y) and
-            (txMouseButtons() == 1)) or n >= 1 or v == false)
+            (txMouseButtons() == 1)) and v == true)
         {
-            txTransparentBlt(txDC(),x-10000,y, w,h,image, 0, 0,RGB(0,0,255));
             n += 1;
+            txTransparentBlt(txDC(),x-10000,y, w,h,image, 0, 0,RGB(0,0,255));
             v = false;
         }
-        else
+        if(v == true)
         {
             txTransparentBlt(txDC(),x,y, w,h,image, 0, 0,RGB(0,0,255));
         }
@@ -338,7 +338,7 @@ int main()
 
     //растения
     plant astr1 = {407,66,130,246,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
-    plant astr2 = {1040,670-246,130,246,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
+    plant astr2 = {1040,670-246,130,246,astr1.image,cat.x,cat.y,cat.w,cat.h,0,true};
     plant astr3 = {1401,300-246,130,246,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
     plant astr4 = {1690,854-246,130,246,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
     plant astr5 = {1258,847-246,130,246,txLoadImage("цветки/астра.bmp"),cat.x,cat.y,cat.w,cat.h,0,true};
@@ -384,7 +384,7 @@ int main()
     bool kvest = false;
     bool fight = false;
     bool vibor = false;
-    bool task1 = true;
+    bool task1 = false;
     bool task2 = false;
     bool task3 = false;
 
@@ -395,6 +395,10 @@ int main()
 
     char str[50];
 
+    char P[50];
+    char L[50];
+    char K[50];
+    char A[50];
 
     char a[50];
     char b[50];
@@ -788,50 +792,72 @@ int main()
 
         cat.drawCat();
 
+        sprintf(A,"%d",nA);
+        sprintf(L,"%d",nAl);
+        sprintf(P,"%d",nP);
+        sprintf(K,"%d",nC);
+        txTextOut(300,400,A);
+        txTextOut(300,430,L);
+        txTextOut(300,460,P);
+        txTextOut(300,490,K);
+
         if(astr1.n>=1 or astr2.n>=1 or astr3.n>=1 or astr4.n>=1 or astr5.n>=1 or astr6.n>=1 or astr7.n>=1 or astr8.n>=1)
         {
-            nA += 1;
             astr1.n = 0; astr2.n = 0; astr3.n = 0; astr4.n = 0; astr5.n = 0; astr6.n = 0; astr7.n = 0; astr8.n = 0;
+            nA += 1;
         }
         if(aloe1.n>=1 or aloe2.n>=1 or aloe3.n>=1 or aloe4.n>=1 or aloe5.n>=1 or aloe6.n>=1 or aloe7.n>=1 or aloe8.n>=1)
         {
-            nAl += 1;
             aloe1.n = 0;aloe2.n = 0;aloe3.n = 0;aloe4.n = 0;aloe5.n = 0;aloe6.n = 0;aloe7.n = 0;aloe8.n = 0;
+            nAl += 1;
         }
         if(cact1.n >= 1 or cact2.n >= 1 or cact3.n >= 1 or cact4.n >= 1 or cact5.n >= 1 or cact6.n >= 1 or cact7.n >= 1 or cact8.n >= 1)
         {
-            nC += 1;
             cact1.n = 0;cact2.n = 0;cact3.n = 0;cact4.n = 0;cact5.n = 0;cact6.n = 0;cact7.n = 0;cact8.n = 0;
+            nC += 1;
         }
         if(sun1.n >= 1 or sun2.n >= 1 or sun3.n >= 1 or sun4.n >= 1 or sun5.n >= 1 or sun6.n >= 1 or sun7.n >= 1 or sun8.n >= 1)
         {
-            nP += 1;
             sun1.n = 0;sun2.n = 0;sun3.n = 0;sun4.n = 0;sun5.n = 0;sun6.n = 0;sun7.n = 0;sun8.n = 0;
+            nP += 1;
         }
-        if(task1 == true and time != 0)
+        if(task1 == false and task2 == false and task3 == false)
         {
             G.draw();
-            DI.text = "Пришло время первого испытания!"; DI.draw();
+            DI.x = 550; DI.y = 475; DI.r = 50; DI.v = true; DI.text = "Пришло время первого испытания!"; DI.draw();
             txSleep(2500);
             DI.text = "Ну что, приступим!"; DI.draw();
             txSleep(2000);
-            DI.text = "Принеси мне 3 астры, 1 подсолнух, 2 алое, 1 кактус"; DI.draw();
-            txSleep(4000);
+            DI.text = "Принеси мне 3 астры, \n" "1 подсолнух, 2 алое, 1 кактус"; DI.draw();
+            txSleep(5000);
             DI.v = false; G.v = false;
-            time -= 1;
+            time = 300;
+            kadr = 0;
+            task1 = true;
+        }
+        if(task1 == true and time != 0)
+        {
+            txBegin();
+            txSetColor(TX_BLACK);
             txSelectFont ("Comic Sans MS", 50);
             sprintf(str,"0:%d",time/10);
-            txTextOut(340,240,str);
-            if(nA == 3 and nP == 1 and nAl == 2 and nC == 1)
+            txTextOut(700,123,str);
+            kadr = 1;
+            if(nA == 3 and nP == 1 and nAl == 2 and nC == 1 and time==1 and kadr == 1)
             {
                 task1 = false;
             }
-            else
+            if(nA != 3 and nP != 1 and nAl != 2 and nC != 1 and time==1 and kadr == 1)
             {
+                DI.v = true; DI.text = "Ты не справился"; DI.draw();
+                G.v = true; G.draw();
+                txSleep(3500);
+                page = "lose";
+            }
+            txEnd();
+            time -= 1;
 
         }
-
-
         int x = txMouseX();
         int y = txMouseY();
         sprintf(a,"%d",x);
@@ -839,7 +865,6 @@ int main()
         txTextOut(500,400,a);
         txTextOut(500,420,b);
         }
-
 
 
         txEnd();
